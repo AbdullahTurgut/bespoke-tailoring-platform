@@ -39,3 +39,7 @@ h5,
 h6 {
   font-family: "Cormorant Garamond", serif;
 }
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
