@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-
-type Suit = {
-  fabric: string;
-  lapel: string;
-  button: string;
-};
+import type { Suit } from "@/types/suit";
+import {
+  fabricNames,
+  lapelNames,
+  buttonNames,
+  fabricPrices,
+  buttonPrices,
+} from "@/constants/suitOptions";
 
 type Props = {
   suit: Suit;
@@ -17,36 +19,6 @@ const SuitPreview = ({ suit }: Props) => {
     black: "/images/luxury-suit.png",
     navy: "/images/luxury-suit.png",
     gray: "/images/luxury-suit.png",
-  };
-
-  const fabricNames = {
-    black: "Italian Black Wool",
-    navy: "Midnight Navy",
-    gray: "Luxury Gray Flannel",
-  };
-
-  const lapelNames = {
-    classic: "Classic Notch",
-    peak: "Peak Lapel",
-    shawl: "Shawl Collar",
-  };
-
-  const buttonNames = {
-    black: "Black Horn",
-    gold: "Gold Accent",
-    silver: "Silver Finish",
-  };
-
-  const fabricPrices = {
-    black: 5000,
-    navy: 6400,
-    gray: 7600,
-  };
-
-  const buttonPrices = {
-    black: 500,
-    gold: 1500,
-    silver: 1000,
   };
 
   const calculatePrice = () => {

@@ -1,7 +1,7 @@
 export interface Product {
   id: number;
   name: string;
-  category: "Wedding" | "Classic" | "Business";
+  category: "Wedding" | "Engagement";
   startingPrice: number;
   image: string;
   rating: number;
@@ -40,7 +40,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: "Executive Grey",
-    category: "Business",
+    category: "Engagement",
     startingPrice: 8500,
     image: "/images/grey-suit.jpg",
     rating: 5,
@@ -53,7 +53,7 @@ export const products: Product[] = [
   {
     id: 4,
     name: "Royal Charcoal",
-    category: "Classic",
+    category: "Engagement",
     startingPrice: 9000,
     image: "/images/charcoal.jpg",
     rating: 5,

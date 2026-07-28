@@ -2,8 +2,8 @@ import { Heart, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const menuItems = [
-  "Koleksiyon",
   "Düğün Takımları",
+  "Nişan Takımları",
   "Özel Tasarım",
   "Hakkımızda",
 ];

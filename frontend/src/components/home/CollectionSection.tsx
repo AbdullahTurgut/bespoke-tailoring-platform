@@ -4,7 +4,7 @@ import { products } from "../../data/products";
 interface CollectionSectionProps {
   title: string;
   description: string;
-  category: "Wedding" | "Classic" | "Business";
+  category: "Wedding" | "Engagement";
 }
 
 const CollectionSection = ({

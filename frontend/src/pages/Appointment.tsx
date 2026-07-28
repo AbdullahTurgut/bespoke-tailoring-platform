@@ -1,9 +1,47 @@
 import { useLocation } from "react-router-dom";
+import { fabricNames, lapelNames, buttonNames } from "@/constants/suitOptions";
+import type { Suit } from "@/types/suit";
+import { useState } from "react";
+
+type AppointmentState = {
+  suit: Suit;
+  price: number;
+};
 
 const Appointment = () => {
   const location = useLocation();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  const { suit, price } = location.state || {};
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log({
+      customer: formData,
+      suit,
+      price,
+    });
+
+    setSubmitted(true);
+  };
+
+  const { suit, price } = (location.state as AppointmentState) || {};
+
   return (
     <main
       className="
@@ -74,25 +112,102 @@ text-xs
             >
               Seçilen Takım Elbise Detayları
             </h3>
-
-            <p className="mt-4">Fabric: {suit.fabric}</p>
-
-            <p>Lapel: {suit.lapel}</p>
-
-            <p>Button: {suit.button}</p>
+            <div>
+              {" "}
+              <span>
+                Fabric : {fabricNames[suit.fabric as keyof typeof fabricNames]}
+              </span>
+            </div>
+            <div>
+              <span>
+                Lapel : {lapelNames[suit.lapel as keyof typeof lapelNames]}
+              </span>
+            </div>
+            <div>
+              <span>
+                Button : {buttonNames[suit.button as keyof typeof buttonNames]}
+              </span>
+            </div>
 
             <p className="mt-4 text-xl">Tahmini Fiyat: {price} TL</p>
           </div>
         )}
-        <form
-          className="
+        {submitted ? (
+          <div
+            className="
+text-center
+border
+border-white/10
+bg-white/5
+p-10
+"
+          >
+            <div
+              className="
+text-[#C8A45D]
+text-4xl
+mb-6
+"
+            >
+              ✓
+            </div>
+
+            <h2
+              className="
+text-4xl
+font-luxury
+"
+            >
+              Randevu Talebiniz Alındı
+            </h2>
+
+            <p
+              className="
+mt-6
+text-gray-400
+leading-relaxed
+"
+            >
+              Sayın {formData.name}, özel dikim talebiniz başarıyla oluşturuldu.
+              <br />
+              Ekibimiz en kısa sürede sizinle iletişime geçecektir.
+            </p>
+
+            <div
+              className="
+mt-8
+border-t
+border-white/10
+pt-6
+"
+            >
+              <p className="text-sm text-gray-500">Tahmini Fiyat</p>
+
+              <p
+                className="
+mt-2
+text-3xl
+font-luxury
+"
+              >
+                {price} TL
+              </p>
+            </div>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="
           space-y-6
           "
-        >
-          <input
-            type="text"
-            placeholder="Ad Soyad"
-            className="
+          >
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Ad Soyad"
+              className="
             w-full
             bg-white/5
             border
@@ -102,12 +217,15 @@ text-xs
             outline-none
             focus:border-[#C8A45D]
             "
-          />
+            />
 
-          <input
-            type="email"
-            placeholder="E-posta"
-            className="
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="E-posta"
+              className="
             w-full
             bg-white/5
             border
@@ -117,12 +235,15 @@ text-xs
             outline-none
             focus:border-[#C8A45D]
             "
-          />
+            />
 
-          <input
-            type="tel"
-            placeholder="Telefon"
-            className="
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Telefon"
+              className="
             w-full
             bg-white/5
             border
@@ -132,12 +253,15 @@ text-xs
             outline-none
             focus:border-[#C8A45D]
             "
-          />
+            />
 
-          <textarea
-            placeholder="Özel talepleriniz..."
-            rows={5}
-            className="
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Özel talepleriniz..."
+              rows={5}
+              className="
             w-full
             bg-white/5
             border
@@ -147,11 +271,11 @@ text-xs
             outline-none
             focus:border-[#C8A45D]
             "
-          />
+            />
 
-          <button
-            type="submit"
-            className="
+            <button
+              type="submit"
+              className="
             w-full
             bg-[#C8A45D]
             text-black
@@ -162,10 +286,11 @@ text-xs
             hover:bg-white
             transition
             "
-          >
-            Randevu Talebi Gönder
-          </button>
-        </form>
+            >
+              Randevu Talebi Gönder
+            </button>
+          </form>
+        )}
       </div>
     </main>
   );

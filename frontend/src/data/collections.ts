@@ -1,7 +1,7 @@
 export interface Collection {
   title: string;
   description: string;
-  category: "Wedding" | "Classic" | "Business";
+  category: "Wedding" | "Engagement";
 }
 
 export const collections: Collection[] = [
@@ -13,16 +13,9 @@ export const collections: Collection[] = [
   },
 
   {
-    title: "Classic Collection",
+    title: "Engagement Collection",
     description:
-      "Zamansız çizgiler ve modern dokunuşlarla günlük şıklığın yeni hali.",
-    category: "Classic",
-  },
-
-  {
-    title: "Business Collection",
-    description:
-      "Profesyonel duruşunuzu tamamlayan size özel tasarlanmış takım elbiseler.",
-    category: "Business",
+      "Nişan gününüzde zarif, modern ve size özel tasarlanmış unutulmaz bir görünüm.",
+    category: "Engagement",
   },
 ];

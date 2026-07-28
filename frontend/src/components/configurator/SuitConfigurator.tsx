@@ -1,9 +1,10 @@
 import { useState } from "react";
 import SuitOptions from "./SuitOptions";
 import SuitPreview from "./SuitPreview";
+import type { Suit } from "@/types/suit";
 
 const SuitConfigurator = () => {
-  const [suit, setSuit] = useState({
+  const [suit, setSuit] = useState<Suit>({
     fabric: "black",
     lapel: "classic",
     button: "black",
