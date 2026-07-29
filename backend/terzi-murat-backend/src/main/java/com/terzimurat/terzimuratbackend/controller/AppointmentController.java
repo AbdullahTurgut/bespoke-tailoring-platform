@@ -1,7 +1,7 @@
 package com.terzimurat.terzimuratbackend.controller;
 
 import com.terzimurat.terzimuratbackend.dto.AppointmentRequest;
-import com.terzimurat.terzimuratbackend.entity.Appointment;
+import com.terzimurat.terzimuratbackend.dto.AppointmentResponse;
 import com.terzimurat.terzimuratbackend.service.AppointmentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +19,11 @@ public class AppointmentController {
 
 
     @PostMapping
-    public ResponseEntity<Appointment> createAppointment(
+    public ResponseEntity<AppointmentResponse> createAppointment(
             @Valid @RequestBody AppointmentRequest request
     ) {
 
-        Appointment appointment =
+        AppointmentResponse appointment =
                 appointmentService.createAppointment(request);
 
         return new ResponseEntity<>(

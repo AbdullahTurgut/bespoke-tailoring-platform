@@ -2,6 +2,7 @@ package com.terzimurat.terzimuratbackend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -43,7 +44,8 @@ public class Appointment {
     @Column(nullable = false)
     private BigDecimal price;
 
-    @Column(nullable = false)
+    @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @PrePersist
