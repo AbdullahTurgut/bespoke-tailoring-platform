@@ -52,4 +52,7 @@ public class Appointment {
     public void prePersist() {
         createdAt = LocalDateTime.now();
     }
+
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status = AppointmentStatus.PENDING;
 }

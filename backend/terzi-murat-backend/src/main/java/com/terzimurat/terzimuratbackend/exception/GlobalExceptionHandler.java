@@ -50,4 +50,21 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(error);
     }
+
+    @ExceptionHandler(AppointmentNotFoundException.class)
+    public ResponseEntity<ApiError> handleAppointmentNotFound(
+            AppointmentNotFoundException exception
+    ) {
+
+        ApiError error = ApiError.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.NOT_FOUND.value())
+                .message(exception.getMessage())
+                .build();
+
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(error);
+    }
 }

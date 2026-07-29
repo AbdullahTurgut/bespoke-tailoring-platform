@@ -1,5 +1,6 @@
 package com.terzimurat.terzimuratbackend.dto;
 
+import com.terzimurat.terzimuratbackend.entity.AppointmentStatus;
 import lombok.Builder;
 import lombok.Data;
 
@@ -29,4 +30,6 @@ public class AppointmentResponse {
     private BigDecimal price;
 
     private LocalDateTime createdAt;
+
+    private AppointmentStatus status;
 }
