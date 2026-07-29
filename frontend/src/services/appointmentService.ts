@@ -1,9 +1,8 @@
-import axios from "axios";
+import api from "@/api/axios";
+import type { AppointmentRequest } from "@/types/appointment";
 
-const API_URL = "http://localhost:8080/api/appointments";
-
-export const createAppointment = async (data: unknown) => {
-  const response = await axios.post(API_URL, data);
+export const createAppointment = async (data: AppointmentRequest) => {
+  const response = await api.post("/appointments", data);
 
   return response.data;
 };
