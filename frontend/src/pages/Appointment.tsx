@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { fabricNames, lapelNames, buttonNames } from "@/constants/suitOptions";
 import type { Suit } from "@/types/suit";
 import { useState } from "react";
+import { createAppointment } from "@/services/appointmentService";
 
 type AppointmentState = {
   suit: Suit;
@@ -31,34 +32,57 @@ const Appointment = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.phone) {
       setError("Lütfen zorunlu alanları doldurun.");
-
       return;
     }
 
     if (!formData.email.includes("@")) {
       setError("Lütfen geçerli bir e-posta adresi girin.");
+      return;
+    }
 
+    if (!suit || !price) {
+      setError("Takım bilgileri bulunamadı.");
       return;
     }
 
     setError("");
     setLoading(true);
 
-    console.log({
-      customer: formData,
-      suit,
-      price,
-    });
+    try {
+      const payload = {
+        customer: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        suit: {
+          fabric: suit.fabric,
+          lapel: suit.lapel,
+          button: suit.button,
+        },
+        price,
+      };
 
-    setTimeout(() => {
-      setLoading(false);
+      const response = await createAppointment(payload);
+
+      console.log("Randevu oluşturuldu:", response);
+
       setSubmitted(true);
-    }, 1200);
+    } catch (error) {
+      console.error("Randevu gönderim hatası:", error);
+
+      setError(
+        "Randevu oluşturulurken bir hata oluştu. Lütfen tekrar deneyiniz.",
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   const { suit, price } = (location.state as AppointmentState) || {};
