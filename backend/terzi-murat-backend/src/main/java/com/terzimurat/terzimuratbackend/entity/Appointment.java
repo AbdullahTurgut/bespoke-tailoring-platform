@@ -1,5 +1,6 @@
 package com.terzimurat.terzimuratbackend.entity;
 
+import com.terzimurat.terzimuratbackend.entity.enums.AppointmentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

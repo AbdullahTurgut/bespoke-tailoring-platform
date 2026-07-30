@@ -3,9 +3,17 @@ import StatusBadge from "./StatusBadge";
 
 type Props = {
   appointments: Appointment[];
+  onDetail: (appointment: Appointment) => void;
 };
 
-export default function AppointmentTable({ appointments }: Props) {
+export default function AppointmentTable({ appointments, onDetail }: Props) {
+  const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString("tr-TR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
   return (
     <div
       className="
@@ -16,16 +24,17 @@ export default function AppointmentTable({ appointments }: Props) {
       bg-white/5
       "
     >
-      <h2
-        className="
-        text-center
- text-2xl
- font-luxury
- mb-6
- "
-      >
-        Randevu Listesi
-      </h2>
+      <div className="mb-6">
+        <h2
+          className="
+    text-2xl
+    font-luxury
+    text-center
+  "
+        >
+          Randevu Listesi
+        </h2>
+      </div>
       <table className="min-w-full">
         <thead className="border-b border-white/10">
           <tr className="text-left text-xs uppercase tracking-[0.2em] text-gray-500">
@@ -40,54 +49,73 @@ export default function AppointmentTable({ appointments }: Props) {
         </thead>
 
         <tbody>
-          {appointments.map((appointment) => (
-            <tr
-              key={appointment.id}
-              className="
-              border-b
-              border-white/10
-              hover:bg-white/5
-              transition
-              "
-            >
-              <td className="px-6 py-5 font-medium">
-                {appointment.customerName}
-              </td>
-
-              <td className="px-6 py-5 text-gray-400">{appointment.phone}</td>
-
-              <td className="px-6 py-5 capitalize">{appointment.fabric}</td>
-
-              <td className="px-6 py-5">{appointment.price} TL</td>
-
-              <td className="px-6 py-5">
-                <StatusBadge status={appointment.status} />
-              </td>
-
-              <td className="px-6 py-5 text-gray-400">
-                {new Date(appointment.createdAt).toLocaleDateString("tr-TR")}
-              </td>
-
-              <td className="px-6 py-5">
-                <button
-                  className="
-                  rounded
-                  border
-                  border-[#C8A45D]
-                  px-4
-                  py-2
-                  text-sm
-                  text-[#C8A45D]
-                  transition
-                  hover:bg-[#C8A45D]
-                  hover:text-black
-                  "
-                >
-                  Detay
-                </button>
+          {appointments.length === 0 ? (
+            <tr>
+              <td
+                colSpan={7}
+                className="
+ py-10
+ text-center
+ text-gray-500
+ "
+              >
+                Henüz randevu bulunmuyor.
               </td>
             </tr>
-          ))}
+          ) : (
+            appointments.map((appointment) => (
+              <tr
+                key={appointment.id}
+                className="
+              border-b
+ border-white/10
+ hover:bg-white/5
+ cursor-pointer
+ transition
+              "
+              >
+                <td className="px-6 py-5 font-medium">
+                  {appointment.customerName}
+                </td>
+
+                <td className="px-6 py-5 text-gray-400">{appointment.phone}</td>
+
+                <td className="px-6 py-5 capitalize">{appointment.fabric}</td>
+
+                <td className="px-6 py-5">{appointment.price} TL</td>
+
+                <td className="px-6 py-5">
+                  <StatusBadge status={appointment.status} />
+                </td>
+
+                <td className="px-6 py-5 text-gray-400">
+                  {formatDate(appointment.createdAt)}
+                </td>
+
+                <td className="px-6 py-5">
+                  <button
+                    onClick={() => onDetail(appointment)}
+                    className="
+                 rounded-full
+ border
+ border-[#C8A45D]
+ px-5
+ py-2
+ text-xs
+ uppercase
+ tracking-widest
+ text-[#C8A45D]
+ transition
+ hover:bg-[#C8A45D]
+ hover:text-black
+                  "
+                  >
+                    Görüntüle
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>

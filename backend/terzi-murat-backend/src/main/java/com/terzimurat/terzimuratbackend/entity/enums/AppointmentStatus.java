@@ -1,4 +1,4 @@
-package com.terzimurat.terzimuratbackend.entity;
+package com.terzimurat.terzimuratbackend.entity.enums;
 
 public enum AppointmentStatus {
 

@@ -1,7 +1,7 @@
 package com.terzimurat.terzimuratbackend.repository;
 
 import com.terzimurat.terzimuratbackend.entity.Appointment;
-import com.terzimurat.terzimuratbackend.entity.AppointmentStatus;
+import com.terzimurat.terzimuratbackend.entity.enums.AppointmentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

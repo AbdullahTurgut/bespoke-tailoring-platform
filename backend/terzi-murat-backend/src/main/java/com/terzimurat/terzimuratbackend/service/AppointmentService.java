@@ -4,12 +4,13 @@ import com.terzimurat.terzimuratbackend.dto.AppointmentRequest;
 import com.terzimurat.terzimuratbackend.dto.AppointmentResponse;
 import com.terzimurat.terzimuratbackend.dto.UpdateStatusRequest;
 import com.terzimurat.terzimuratbackend.entity.Appointment;
-import com.terzimurat.terzimuratbackend.entity.AppointmentStatus;
+import com.terzimurat.terzimuratbackend.entity.enums.AppointmentStatus;
 import com.terzimurat.terzimuratbackend.exception.AppointmentNotFoundException;
 import com.terzimurat.terzimuratbackend.repository.AppointmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import com.terzimurat.terzimuratbackend.entity.enums.AppointmentStatus;
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -146,7 +147,25 @@ public class AppointmentService {
                 .toList();
     }
 
-    private AppointmentResponse mapToResponse(
+    public Appointment updateStatus(
+            Long id,
+            AppointmentStatus status
+    ) {
+
+        Appointment appointment = appointmentRepository
+                .findById(id)
+                .orElseThrow(() ->
+                        new EntityNotFoundException(
+                                "Randevu bulunamadı"
+                        )
+                );
+
+        appointment.setStatus(status);
+
+        return appointmentRepository.save(appointment);
+    }
+
+    public AppointmentResponse mapToResponse(
             Appointment appointment
     ) {
 

@@ -2,15 +2,17 @@ package com.terzimurat.terzimuratbackend.controller;
 
 import com.terzimurat.terzimuratbackend.dto.AppointmentRequest;
 import com.terzimurat.terzimuratbackend.dto.AppointmentResponse;
+import com.terzimurat.terzimuratbackend.dto.UpdateAppointmentStatusRequest;
 import com.terzimurat.terzimuratbackend.dto.UpdateStatusRequest;
-import com.terzimurat.terzimuratbackend.entity.AppointmentStatus;
+import com.terzimurat.terzimuratbackend.entity.Appointment;
+import com.terzimurat.terzimuratbackend.entity.enums.AppointmentStatus;
 import com.terzimurat.terzimuratbackend.service.AppointmentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @RestController
@@ -72,6 +74,24 @@ public class AppointmentController {
 
         return ResponseEntity.ok(
                 appointmentService.getAppointmentById(id)
+        );
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<AppointmentResponse> updateStatus(
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateAppointmentStatusRequest request
+    ) {
+
+        Appointment appointment =
+                appointmentService.updateStatus(
+                        id,
+                        request.getStatus()
+                );
+
+
+        return ResponseEntity.ok(
+                appointmentService.mapToResponse(appointment)
         );
     }
 }

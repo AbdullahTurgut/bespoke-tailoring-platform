@@ -1,6 +1,6 @@
 package com.terzimurat.terzimuratbackend.dto;
 
-import com.terzimurat.terzimuratbackend.entity.AppointmentStatus;
+import com.terzimurat.terzimuratbackend.entity.enums.AppointmentStatus;
 import lombok.Builder;
 import lombok.Data;
 

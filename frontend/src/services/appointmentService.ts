@@ -32,7 +32,7 @@ export const updateAppointmentStatus = async (
   id: number,
   status: AppointmentStatus,
 ): Promise<Appointment> => {
-  const response = await axios.put<Appointment>(`${API}/${id}/status`, {
+  const response = await axios.patch(`${API}/${id}/status`, {
     status,
   });
 

@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UpdateStatusRequest {
+public class UpdateAppointmentStatusRequest {
 
-    @NotNull(message = "Status bilgisi zorunludur")
+    @NotNull(message = "Status zorunludur")
     private AppointmentStatus status;
 }
