@@ -16,6 +16,16 @@ export default function AppointmentTable({ appointments }: Props) {
       bg-white/5
       "
     >
+      <h2
+        className="
+        text-center
+ text-2xl
+ font-luxury
+ mb-6
+ "
+      >
+        Randevu Listesi
+      </h2>
       <table className="min-w-full">
         <thead className="border-b border-white/10">
           <tr className="text-left text-xs uppercase tracking-[0.2em] text-gray-500">
