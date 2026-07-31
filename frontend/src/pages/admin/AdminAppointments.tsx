@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { getAppointments } from "@/services/appointmentService";
+import { useState } from "react";
 import type { Appointment } from "@/types/appointment";
+import useAppointments from "@/hooks/useAppointments";
 import AppointmentTable from "@/components/admin/AppointmentTable";
 import DashboardStats from "@/components/admin/DashboardStats";
 import AppointmentFilters from "@/components/admin/AppointmentFilters";
@@ -10,8 +10,7 @@ import { updateAppointmentStatus } from "@/services/appointmentService";
 import toast from "react-hot-toast";
 
 const AdminAppointments = () => {
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { appointments, setAppointments, loading } = useAppointments();
   const [activeFilter, setActiveFilter] = useState<AppointmentStatus | "ALL">(
     "ALL",
   );
@@ -25,18 +24,6 @@ const AdminAppointments = () => {
       : appointments.filter(
           (appointment) => appointment.status === activeFilter,
         );
-  useEffect(() => {
-    const loadAppointments = async () => {
-      try {
-        const data = await getAppointments();
-        setAppointments(data);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadAppointments();
-  }, []);
 
   if (loading) {
     return (
@@ -95,8 +82,7 @@ const AdminAppointments = () => {
     leading-relaxed
     "
         >
-          Oluşturulan randevuları görüntüleyin, durumlarını güncelleyin ve
-          müşteri taleplerini tek panel üzerinden yönetin.
+          Randevuları görüntüleyin ve durumlarını yönetin.
         </p>
       </div>
 
