@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <section
@@ -80,7 +82,8 @@ sm:flex-row
 gap-4
             "
           >
-            <button
+            <Link
+              to="/create-your-suit"
               className="
             bg-[#C8A45D]
 text-black
@@ -96,7 +99,7 @@ rounded-sm
               "
             >
               Takımını Oluştur
-            </button>
+            </Link>
 
             <button
               className="

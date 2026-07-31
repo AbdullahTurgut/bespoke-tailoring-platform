@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SignatureCTA = () => {
   return (
     <section
@@ -65,25 +67,35 @@ const SignatureCTA = () => {
           tasarlayalım.
         </p>
 
-        <button
+        <div
           className="
-          mt-12
-          bg-[#C8A45D]
-          text-black
-          px-10
-          py-4
-          text-sm
-          uppercase
-          tracking-[0.2em]
-          rounded-sm
-          transition-all
-          duration-300
-          hover:bg-white
-          hover:scale-105
-          "
+            justify-center
+            mt-10
+           flex
+flex-col
+sm:flex-row
+gap-4
+            "
         >
-          Takımını Oluştur
-        </button>
+          <Link
+            to="/create-your-suit"
+            className="
+            bg-[#C8A45D]
+text-black
+px-10
+py-4
+text-sm
+tracking-[0.15em]
+uppercase
+transition-all
+duration-300
+hover:bg-white
+rounded-sm
+              "
+          >
+            Takımını Oluştur
+          </Link>
+        </div>
       </div>
     </section>
   );

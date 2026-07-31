@@ -31,7 +31,7 @@ const CreateSuit = () => {
               text-[#C8A45D]
               "
             >
-              Bespoke Studio
+              Tasarım Stüdyosu
             </span>
 
             <h1

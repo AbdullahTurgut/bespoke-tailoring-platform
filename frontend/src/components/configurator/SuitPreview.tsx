@@ -35,9 +35,9 @@ const SuitPreview = ({ suit }: Props) => {
     <div
       className="
       relative
-  flex
-  justify-center
-  items-center
+      flex
+      justify-center
+      items-center
       "
     >
       {/* Glow */}
@@ -45,11 +45,11 @@ const SuitPreview = ({ suit }: Props) => {
       <div
         className="
         absolute
-        w-96
-        h-96
+        w-[420px]
+        h-[420px]
         bg-[#C8A45D]
-        opacity-10
-        blur-3xl
+        opacity-[0.08]
+        blur-[120px]
         rounded-full
         "
       />
@@ -62,9 +62,10 @@ const SuitPreview = ({ suit }: Props) => {
         bg-white/5
         border
         border-white/10
-        p-6
-        rounded-sm
-        backdrop-blur-sm
+        p-8
+        rounded-2xl
+        backdrop-blur-md
+        shadow-2xl
         "
       >
         <img
@@ -77,7 +78,7 @@ const SuitPreview = ({ suit }: Props) => {
           object-contain
           transition-all
           duration-700
-          hover:scale-105
+          hover:scale-[1.02]
           "
         />
 
@@ -86,11 +87,12 @@ const SuitPreview = ({ suit }: Props) => {
         <div
           className="
           mt-8
-          border-t
+          rounded-xl
+          border
           border-white/10
-          pt-6
-          text-sm
-          space-y-3
+          bg-black/20
+          p-5
+          space-y-4
           "
         >
           <div className="flex justify-between">
@@ -117,36 +119,42 @@ const SuitPreview = ({ suit }: Props) => {
             </span>
           </div>
         </div>
+
+        {/* Price */}
+
         <div
           className="
-  mt-8
-  pt-6
-  border-t
-  border-white/10
-  "
+          mt-8
+          pt-6
+          border-t
+          border-white/10
+          "
         >
           <span
             className="
-    text-xs
-    uppercase
-    tracking-[0.4em]
-    text-[#C8A45D]
-    "
+            text-xs
+            uppercase
+            tracking-[0.4em]
+            text-[#C8A45D]
+            "
           >
-            TAHMİNİ FİYAT
+            Tahmini Fiyat
           </span>
 
           <div
             className="
-    mt-3
-    text-3xl
-    font-luxury
-    text-white
-    "
+            mt-3
+            text-4xl
+            font-luxury
+            text-[#C8A45D]
+            "
           >
-            {calculatePrice()} TL
+            {calculatePrice().toLocaleString("tr-TR")} ₺
           </div>
         </div>
+
+        {/* Appointment Button */}
+
         <button
           onClick={() =>
             navigate("/appointment", {
@@ -157,17 +165,21 @@ const SuitPreview = ({ suit }: Props) => {
             })
           }
           className="
-  mt-8
-  w-full
-  bg-[#C8A45D]
-  text-black
-  py-4
-  uppercase
-  tracking-[0.2em]
-  text-sm
-  hover:bg-white
-  transition
-  "
+          mt-8
+          w-full
+          rounded-full
+          bg-[#C8A45D]
+          text-black
+          py-4
+          uppercase
+          tracking-[0.3em]
+          text-sm
+          font-medium
+          hover:bg-white
+          hover:scale-[1.02]
+          transition-all
+          duration-300
+          "
         >
           Randevu Talebi Oluştur
         </button>

@@ -93,6 +93,7 @@ const SuitOptions = ({ suit, setSuit }: Props) => {
               className={`
               w-full
               text-left
+              rounded-xl
               border
               px-6
               py-4
@@ -100,8 +101,8 @@ const SuitOptions = ({ suit, setSuit }: Props) => {
               duration-300
               ${
                 suit.fabric === fabric.id
-                  ? "border-[#C8A45D] bg-white/5"
-                  : "border-white/10 hover:border-white/40"
+                  ? "border-[#C8A45D] bg-[#C8A45D]/10 shadow-[0_0_20px_rgba(200,164,93,0.15)]"
+                  : "border-white/10 hover:border-white/40 hover:bg-white/5"
               }
               `}
             >
@@ -137,15 +138,16 @@ const SuitOptions = ({ suit, setSuit }: Props) => {
                 })
               }
               className={`
-              border
-              py-4
-              text-sm
-              transition-all
-              duration-300
+              rounded-xl
+border
+py-4
+text-sm
+transition-all
+duration-300
               ${
                 suit.lapel === lapel.id
-                  ? "border-[#C8A45D] text-[#C8A45D]"
-                  : "border-white/10 text-gray-400 hover:text-white"
+                  ? "border-[#C8A45D] text-[#C8A45D] bg-[#C8A45D]/10 shadow-[0_0_20px_rgba(200,164,93,0.12)]"
+                  : "border-white/10 text-gray-400 hover:text-white hover:bg-white/5"
               }
               `}
             >
@@ -181,15 +183,16 @@ const SuitOptions = ({ suit, setSuit }: Props) => {
                 })
               }
               className={`
-              border
-              py-4
-              text-sm
-              transition-all
-              duration-300
+                rounded-xl
+border
+py-4
+text-sm
+transition-all
+duration-300
               ${
                 suit.button === button.id
-                  ? "border-[#C8A45D] text-[#C8A45D]"
-                  : "border-white/10 text-gray-400 hover:text-white"
+                  ? "border-[#C8A45D] bg-[#C8A45D]/10 text-[#C8A45D] shadow-[0_0_20px_rgba(200,164,93,0.12)]"
+                  : "border-white/10 text-gray-400 hover:text-white hover:bg-white/5"
               }
               `}
             >

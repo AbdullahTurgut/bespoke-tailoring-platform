@@ -237,7 +237,7 @@ font-luxury
 text-[#C8A45D]
 "
               >
-                {price} TL
+                {price.toLocaleString("tr-TR")} ₺
               </p>
             </div>
           </div>
@@ -263,11 +263,13 @@ text-[#C8A45D]
           <div
             className="
 text-center
- border
- border-white/10
- bg-white/5
- p-10
- animate-fade-in
+  border
+  border-white/10
+  bg-white/5
+  rounded-2xl
+  p-10
+  shadow-2xl
+  animate-fade-in
 "
           >
             <div
@@ -318,7 +320,7 @@ text-3xl
 font-luxury
 "
               >
-                {price} TL
+                {price.toLocaleString("tr-TR")} ₺
               </p>
             </div>
           </div>
@@ -422,16 +424,20 @@ duration-300
               disabled={loading}
               className="
              w-full
-  bg-[#C8A45D]
-  text-black
-  py-4
-  uppercase
-  tracking-[0.2em]
-  text-sm
-  hover:bg-white
-  transition
-  disabled:opacity-50
-  disabled:cursor-not-allowed
+rounded-full
+bg-[#C8A45D]
+text-black
+py-4
+uppercase
+tracking-[0.25em]
+text-sm
+font-medium
+transition
+duration-300
+hover:bg-white
+hover:-translate-y-1
+disabled:opacity-50
+disabled:cursor-not-allowed
             "
             >
               {loading ? "Gönderiliyor..." : "Randevu Talebi Gönder"}
