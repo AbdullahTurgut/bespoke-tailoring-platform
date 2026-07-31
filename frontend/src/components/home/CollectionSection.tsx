@@ -2,12 +2,14 @@ import ProductCard from "../shared/ProductCard";
 import { products } from "../../data/products";
 
 interface CollectionSectionProps {
+  id: string;
   title: string;
   description: string;
   category: "Wedding" | "Engagement";
 }
 
 const CollectionSection = ({
+  id,
   title,
   description,
   category,
@@ -18,9 +20,11 @@ const CollectionSection = ({
 
   return (
     <section
+      id={id}
       className="
-      py-24
-      bg-[#FAFAF8]
+ py-24
+ bg-[#FAFAF8]
+ scroll-mt-20
     "
     >
       {/* Header */}
@@ -68,7 +72,7 @@ const CollectionSection = ({
           transition
           "
         >
-          Explore Collection →
+          Modelleri Keşfet →
         </button>
       </div>
 

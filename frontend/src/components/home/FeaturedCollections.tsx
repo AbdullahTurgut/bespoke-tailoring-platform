@@ -7,6 +7,7 @@ const FeaturedCollections = () => {
       {collections.map((collection) => (
         <CollectionSection
           key={collection.category}
+          id={collection.id}
           title={collection.title}
           description={collection.description}
           category={collection.category}

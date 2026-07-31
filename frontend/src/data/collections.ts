@@ -2,20 +2,23 @@ export interface Collection {
   title: string;
   description: string;
   category: "Wedding" | "Engagement";
+  id: string;
 }
 
 export const collections: Collection[] = [
   {
-    title: "Wedding Collection",
+    id: "wedding",
+    title: "Damatlık Koleksiyonu",
     description:
-      "Hayatınızın en özel günü için kusursuz işçilik, premium kumaş ve kişiye özel tasarım.",
+      "Hayatınızın en özel günü için kişisel ölçüleriniz, premium kumaşlar ve usta terzilik ile hazırlanan özel tasarım damatlıklar.",
     category: "Wedding",
   },
 
   {
-    title: "Engagement Collection",
+    id: "engagement",
+    title: "Nişan Takımları",
     description:
-      "Nişan gününüzde zarif, modern ve size özel tasarlanmış unutulmaz bir görünüm.",
+      "Nişan gününüzde tarzınızı yansıtan modern kesimler, seçkin kumaşlar ve size özel detaylarla hazırlanan özel tasarım takımlar.",
     category: "Engagement",
   },
 ];

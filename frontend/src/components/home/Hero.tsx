@@ -34,43 +34,43 @@ const Hero = () => {
           "
         >
           <span
-            className="
-    text-xs
-    tracking-[0.5em]
-    text-[#C8A45D]
-    uppercase
-    "
+            className="        
+  text-xs
+  tracking-[0.5em]
+  text-[#C8A45D]
+  uppercase
+  "
           >
-            Bespoke Collection
+            Bespoke Wedding Atelier
           </span>
 
           <h1
             className="
-mt-6
-text-5xl
-md:text-8xl
-font-luxury
-font-light
-leading-[0.95]
-tracking-wide
-"
+  mt-6
+  text-5xl
+  md:text-7xl
+  font-luxury
+  font-light
+  leading-[0.95]
+  tracking-wide
+  "
           >
-            Kusursuz Uyum.
+            En Özel Gününüze
             <br />
-            Zamansız Zarafet.
+            En Özel Tasarım
           </h1>
 
           <p
             className="
-            mt-8
-            text-gray-400
-            text-lg
-            max-w-lg
-            leading-relaxed
-            "
+  mt-8
+  text-gray-400
+  text-lg
+  max-w-lg
+  leading-relaxed
+  "
           >
-            Kendi ölçüleriniz, kendi tarzınız ve zamansız bir siluet. Seçkin
-            kumaşlar ile usta terziliğin birleştiği özel koleksiyonlar.
+            Damatlık ve özel gün takımlarında kişisel ölçüleriniz, seçkin
+            kumaşlar ve usta terzilik ile kusursuz uyum.
           </p>
 
           <div
@@ -85,18 +85,19 @@ gap-4
             <Link
               to="/create-your-suit"
               className="
-            bg-[#C8A45D]
+bg-[#C8A45D]
 text-black
 px-10
 py-4
 text-sm
-tracking-[0.15em]
 uppercase
+tracking-[0.25em]
+rounded-full
 transition-all
 duration-300
 hover:bg-white
-rounded-sm
-              "
+hover:scale-[1.02]
+"
             >
               Takımını Oluştur
             </Link>
@@ -158,7 +159,7 @@ md:scale-110
 object-contain
 transition-transform
 duration-700
-hover:scale-[1.15]
+hover:scale-[1.03]
     "
           />
         </div>
