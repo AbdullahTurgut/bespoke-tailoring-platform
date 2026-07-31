@@ -82,7 +82,9 @@ export default function AppointmentTable({ appointments, onDetail }: Props) {
 
                 <td className="px-6 py-5 capitalize">{appointment.fabric}</td>
 
-                <td className="px-6 py-5">{appointment.price} TL</td>
+                <td className="px-6 py-5">
+                  {appointment.price.toLocaleString("tr-TR")} ₺
+                </td>
 
                 <td className="px-6 py-5">
                   <StatusBadge status={appointment.status} />
@@ -94,6 +96,7 @@ export default function AppointmentTable({ appointments, onDetail }: Props) {
 
                 <td className="px-6 py-5">
                   <button
+                    type="button"
                     onClick={() => onDetail(appointment)}
                     className="
                  rounded-full

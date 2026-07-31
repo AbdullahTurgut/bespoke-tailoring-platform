@@ -2,7 +2,6 @@ import { useState } from "react";
 import type { Appointment } from "@/types/appointment";
 import useAppointments from "@/hooks/useAppointments";
 import AppointmentTable from "@/components/admin/AppointmentTable";
-import DashboardStats from "@/components/admin/DashboardStats";
 import AppointmentFilters from "@/components/admin/AppointmentFilters";
 import type { AppointmentStatus } from "@/types/appointment";
 import AppointmentDetailModal from "@/components/admin/AppointmentDetailModal";
@@ -62,8 +61,16 @@ const AdminAppointments = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#0B0B0B] text-white p-10">
-      <div className="mb-10 text-center">
+    <main
+      className="min-h-screen
+bg-[#0B0B0B]
+text-white
+p-10"
+    >
+      <div
+        className="mb-10 text-center max-w-7xl
+mx-auto"
+      >
         <h1
           className="
     text-5xl
@@ -86,12 +93,12 @@ const AdminAppointments = () => {
         </p>
       </div>
 
-      <DashboardStats appointments={appointments} />
-
-      <AppointmentFilters
-        activeFilter={activeFilter}
-        onFilterChange={setActiveFilter}
-      />
+      <div className="mb-8">
+        <AppointmentFilters
+          activeFilter={activeFilter}
+          onFilterChange={setActiveFilter}
+        />
+      </div>
 
       <AppointmentTable
         appointments={filteredAppointments}

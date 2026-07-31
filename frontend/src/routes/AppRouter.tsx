@@ -6,16 +6,21 @@ import Appointment from "@/pages/Appointment";
 import AdminAppointments from "@/pages/admin/AdminAppointments";
 import AdminLayout from "@/components/layout/AdminLayout";
 import Dashboard from "@/pages/admin/Dashboard";
+import PublicLayout from "@/components/layout/PublicLayout";
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      {/* PUBLIC */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<Home />} />
 
-      <Route path="/create-your-suit" element={<CreateSuit />} />
+        <Route path="/create-your-suit" element={<CreateSuit />} />
 
-      <Route path="/appointment" element={<Appointment />} />
+        <Route path="/appointment" element={<Appointment />} />
+      </Route>
 
+      {/* ADMIN */}
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Dashboard />} />
 

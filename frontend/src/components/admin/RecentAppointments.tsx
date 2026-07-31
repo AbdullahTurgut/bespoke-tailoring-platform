@@ -19,7 +19,7 @@ export default function RecentAppointments({ appointments }: Props) {
       rounded-2xl
       border
       border-white/10
-      bg-white/5
+      bg-white/4
       p-6
       "
     >
@@ -32,7 +32,6 @@ export default function RecentAppointments({ appointments }: Props) {
         >
           Son Randevular
         </h2>
-
         <p
           className="
           mt-2

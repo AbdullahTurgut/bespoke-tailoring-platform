@@ -22,6 +22,10 @@ const statuses: {
     value: "COMPLETED",
     label: "Tamamlandı",
   },
+  {
+    value: "CANCELLED",
+    label: "İptal",
+  },
 ];
 
 export default function StatusDropdown({ value, onChange }: Props) {

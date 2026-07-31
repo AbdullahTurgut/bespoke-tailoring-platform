@@ -9,6 +9,8 @@ export default function Dashboard() {
     return (
       <div
         className="
+         max-w-7xl
+    mx-auto
         flex
         min-h-[60vh]
         items-center
@@ -53,9 +55,16 @@ export default function Dashboard() {
 
       <DashboardStats appointments={appointments} />
 
-      <RecentAppointments appointments={appointments} />
-
-      <ActivitySummary appointments={appointments} />
+      <div
+        className="
+  grid
+  gap-6
+  lg:grid-cols-2
+  "
+      >
+        <RecentAppointments appointments={appointments} />
+        <ActivitySummary appointments={appointments} />{" "}
+      </div>
     </div>
   );
 }

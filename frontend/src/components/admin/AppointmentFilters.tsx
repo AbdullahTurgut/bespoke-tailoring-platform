@@ -27,6 +27,10 @@ const filters: {
     label: "Tamamlandı",
     value: "COMPLETED",
   },
+  {
+    label: "İptal",
+    value: "CANCELLED",
+  },
 ];
 
 export default function AppointmentFilters({
@@ -36,34 +40,60 @@ export default function AppointmentFilters({
   return (
     <div
       className="
-      justify-center
       flex
       flex-wrap
+      justify-center
       gap-3
       mb-10
+      rounded-2xl
+      border
+      border-white/10
+      bg-white/[0.04]
+      p-4
       "
     >
-      {filters.map((filter) => (
-        <button
-          key={filter.value}
-          onClick={() => onFilterChange(filter.value)}
-          className={`
-          px-5
-          py-3
-          text-sm
-          tracking-wide
-          border
-          transition
-          ${
-            activeFilter === filter.value
-              ? "bg-[#C8A45D] text-black border-[#C8A45D]"
-              : "border-white/10 text-gray-400 hover:text-white hover:border-white/30"
-          }
-          `}
-        >
-          {filter.label}
-        </button>
-      ))}
+      {filters.map((filter) => {
+        const isActive = activeFilter === filter.value;
+
+        return (
+          <button
+            key={filter.value}
+            onClick={() => onFilterChange(filter.value)}
+            className={`
+            rounded-full
+            px-6
+            py-3
+            text-xs
+            uppercase
+            tracking-widest
+            transition-all
+            duration-300
+
+            ${
+              isActive
+                ? `
+                bg-[#C8A45D]
+                text-black
+                border
+                border-[#C8A45D]
+                shadow-lg
+                shadow-[#C8A45D]/10
+                `
+                : `
+                border
+                border-white/10
+                text-gray-400
+                hover:text-white
+                hover:border-[#C8A45D]/40
+                hover:-translate-y-0.5
+                `
+            }
+            `}
+          >
+            {filter.label}
+          </button>
+        );
+      })}
     </div>
   );
 }

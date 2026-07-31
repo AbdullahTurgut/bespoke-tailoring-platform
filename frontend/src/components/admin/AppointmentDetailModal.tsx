@@ -277,7 +277,7 @@ disabled:cursor-not-allowed
               font-luxury
               "
             >
-              {appointment.price} ₺
+              {appointment.price.toLocaleString("tr-TR")} ₺
             </p>
           </div>
         </div>

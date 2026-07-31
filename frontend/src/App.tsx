@@ -1,16 +1,10 @@
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import AppRouter from "@/routes/AppRouter";
 import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="min-h-screen bg-black">
-      <Navbar />
-
       <AppRouter />
-
-      <Footer />
 
       <Toaster
         position="top-right"

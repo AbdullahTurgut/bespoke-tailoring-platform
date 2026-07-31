@@ -4,6 +4,7 @@ import {
   Clock3,
   MessageCircle,
   CheckCircle2,
+  XCircle,
 } from "lucide-react";
 
 type Props = {
@@ -19,26 +20,38 @@ export default function DashboardStats({ appointments }: Props) {
 
   const completed = appointments.filter((a) => a.status === "COMPLETED").length;
 
+  const cancelled = appointments.filter((a) => a.status === "CANCELLED").length;
+
   const cards = [
     {
       title: "Toplam Randevu",
       value: total,
       icon: CalendarDays,
+      description: "Tüm kayıtlar",
     },
     {
       title: "Bekleyen",
       value: pending,
       icon: Clock3,
+      description: "Yanıt bekleyen",
     },
     {
       title: "İletişime Geçildi",
       value: contacted,
       icon: MessageCircle,
+      description: "Aktif süreç",
     },
     {
       title: "Tamamlandı",
       value: completed,
       icon: CheckCircle2,
+      description: "Başarıyla sonuçlanan",
+    },
+    {
+      title: "İptal Edilen",
+      value: cancelled,
+      icon: XCircle,
+      description: "İptal edilen",
     },
   ];
 
@@ -49,7 +62,7 @@ export default function DashboardStats({ appointments }: Props) {
       gap-6
       mb-10
       sm:grid-cols-2
-      xl:grid-cols-4
+      xl:grid-cols-5
       "
     >
       {cards.map((card) => {
@@ -60,66 +73,101 @@ export default function DashboardStats({ appointments }: Props) {
             key={card.title}
             className="
             group
+            relative
+            overflow-hidden
             rounded-2xl
             border
             border-white/10
-            bg-white/5
-            backdrop-blur
+            bg-white/[0.04]
             p-6
             transition-all
             duration-300
-            hover:border-[#C8A45D]/40
             hover:-translate-y-1
+            hover:border-[#C8A45D]/50
             "
           >
+            {/* Luxury glow */}
             <div
               className="
+              absolute
+              -right-10
+              -top-10
+              h-32
+              w-32
+              rounded-full
+              bg-[#C8A45D]/10
+              blur-3xl
+              transition
+              group-hover:bg-[#C8A45D]/20
+              "
+            />
+
+            <div
+              className="
+              relative
               flex
-              items-center
+              items-start
               justify-between
               "
             >
-              <p
+              <div>
+                <p
+                  className="
+                  text-xs
+                  uppercase
+                  tracking-[0.3em]
+                  text-gray-500
+                  "
+                >
+                  {card.title}
+                </p>
+
+                <h2
+                  className="
+                  mt-5
+                  text-5xl
+                  font-luxury
+                  tracking-wide
+                  text-[#C8A45D]
+                  "
+                >
+                  {card.value}
+                </h2>
+              </div>
+
+              <div
                 className="
-                text-xs
-                uppercase
-                tracking-[0.25em]
-                text-gray-500
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#C8A45D]/30
+                bg-black/30
                 "
               >
-                {card.title}
-              </p>
-
-              <Icon
-                size={20}
-                className="
-                text-[#C8A45D]
-                opacity-70
-                group-hover:opacity-100
-                transition
-                "
-              />
+                <Icon
+                  size={20}
+                  className="
+                  text-[#C8A45D]
+                  "
+                />
+              </div>
             </div>
-
-            <h2
-              className="
-              mt-6
-              text-5xl
-              font-luxury
-              text-[#C8A45D]
-              "
-            >
-              {card.value}
-            </h2>
 
             <p
               className="
-              mt-2
+              relative
+              mt-5
               text-xs
+              uppercase
+              tracking-widest
               text-gray-600
               "
             >
-              Güncel kayıt durumu
+              {card.description}
             </p>
           </div>
         );
