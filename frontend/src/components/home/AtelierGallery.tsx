@@ -1,4 +1,4 @@
-const InstagramGallery = () => {
+const AtelierGallery = () => {
   const images = [
     {
       src: "/images/gallery/atelier.jpg",
@@ -135,4 +135,4 @@ p-8
   );
 };
 
-export default InstagramGallery;
+export default AtelierGallery;

@@ -2,7 +2,7 @@ import Hero from "../components/home/Hero";
 import FeaturedCollections from "../components/home/FeaturedCollections";
 import WhyUs from "../components/home/WhyUs";
 import Reviews from "../components/home/Reviews";
-import InstagramGallery from "../components/home/InstagramGallery";
+import AtelierGallery from "../components/home/AtelierGallery";
 import SignatureCTA from "@/components/home/SignatureCTA";
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
 
       <Reviews />
 
-      <InstagramGallery />
+      <AtelierGallery />
 
       <SignatureCTA />
     </main>
