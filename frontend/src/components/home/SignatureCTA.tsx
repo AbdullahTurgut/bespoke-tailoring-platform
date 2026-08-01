@@ -4,15 +4,36 @@ const SignatureCTA = () => {
   return (
     <section
       className="
+      relative
       bg-[#0B0B0B]
       text-white
-      py-32
+      py-36
       px-6
+      overflow-hidden
       "
     >
+      {/* Background Glow */}
+
       <div
         className="
-        max-w-4xl
+        absolute
+        top-1/2
+        left-1/2
+        -translate-x-1/2
+        -translate-y-1/2
+        w-[500px]
+        h-[500px]
+        bg-[#C8A45D]
+        opacity-10
+        blur-3xl
+        rounded-full
+        "
+      />
+
+      <div
+        className="
+        relative
+        max-w-5xl
         mx-auto
         text-center
         "
@@ -35,7 +56,7 @@ const SignatureCTA = () => {
           text-[#C8A45D]
           "
         >
-          Your Signature
+          Kişiye Özel Terzilik
         </span>
 
         <h2
@@ -48,9 +69,9 @@ const SignatureCTA = () => {
           leading-tight
           "
         >
-          Hazır Giyim Değil.
+          Özel Gününüz İçin
           <br />
-          Size Özel Bir Karakter.
+          Kusursuz Bir Başlangıç
         </h2>
 
         <p
@@ -63,37 +84,34 @@ const SignatureCTA = () => {
           leading-relaxed
           "
         >
-          Her büyük takım elbise tek bir ölçüyle başlar. Kusursuz uyumu birlikte
-          tasarlayalım.
+          Düğün ve nişan günleriniz için ölçülerinize, tarzınıza ve
+          karakterinize özel tasarlanan takım elbisenizi birlikte oluşturalım.
         </p>
 
         <div
           className="
-            justify-center
-            mt-10
-           flex
-flex-col
-sm:flex-row
-gap-4
-            "
+          mt-12
+          flex
+          justify-center
+          "
         >
           <Link
             to="/create-your-suit"
             className="
             bg-[#C8A45D]
-text-black
-px-10
-py-4
-text-sm
-tracking-[0.15em]
-uppercase
-transition-all
-duration-300
-hover:bg-white
-rounded-sm
-              "
+            text-black
+            px-12
+            py-5
+            text-sm
+            uppercase
+            tracking-[0.2em]
+            rounded-sm
+            transition-all
+            duration-300
+            hover:bg-white
+            "
           >
-            Takımını Oluştur
+            Tasarımına Başla
           </Link>
         </div>
       </div>
