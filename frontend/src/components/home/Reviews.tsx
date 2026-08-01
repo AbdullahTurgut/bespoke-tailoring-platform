@@ -2,20 +2,21 @@ const Reviews = () => {
   const reviews = [
     {
       quote:
-        "Bir takım elbiseden fazlası. Kişisel imzamı taşıyan özel bir tasarım.",
-      name: "Ahmet Kaya",
-      role: "Executive Director",
+        "Bir takım elbiseden fazlası. Düğün günüm için tamamen bana özel hazırlanmış kusursuz bir deneyimdi.",
+      name: "Özel Damatlık Müşterisi",
+      role: "İstanbul",
     },
     {
       quote:
-        "Kumaş seçiminden son provaya kadar her detay kusursuz şekilde planlandı.",
-      name: "Mehmet Arslan",
-      role: "Business Owner",
+        "Kumaş seçiminden son provaya kadar her detay büyük bir özenle planlandı.",
+      name: "Nişan Takımı Müşterisi",
+      role: "Kişiye Özel Tasarım",
     },
     {
-      quote: "Tarzımı yansıtan, bana özel hazırlanmış zamansız bir koleksiyon.",
-      name: "Can Yılmaz",
-      role: "Entrepreneur",
+      quote:
+        "Tarzımı yansıtan, ölçülerime göre hazırlanmış zamansız bir takım elbise.",
+      name: "Özel Tasarım Müşterisi",
+      role: "Bespoke Experience",
     },
   ];
   return (
@@ -44,7 +45,7 @@ const Reviews = () => {
           uppercase
           "
         >
-          Client Experiences
+          Müşteri Deneyimleri
         </span>
 
         <h2
@@ -70,8 +71,8 @@ const Reviews = () => {
           leading-relaxed
           "
         >
-          Her detayın kişisel ölçüleriniz ve tarzınız için yeniden
-          şekillendirildiği özel bir terzilik deneyimi.
+          Düğün ve özel günleriniz için hazırlanan her takım, kişisel
+          ölçüleriniz ve tarzınız doğrultusunda benzersiz bir deneyime dönüşür.
         </p>
 
         <div

@@ -5,24 +5,51 @@ import { Link } from "react-router-dom";
 const menuItems = [
   {
     label: "Damatlıklar",
-    path: "/#wedding",
+    to: "/#wedding",
+    type: "anchor",
   },
   {
     label: "Nişan Takımları",
-    path: "/#engagement",
+    to: "/#engagement",
+    type: "anchor",
   },
   {
     label: "Özel Tasarım",
-    path: "/create-your-suit",
+    to: "/create-your-suit",
+    type: "route",
   },
   {
     label: "Hakkımızda",
-    path: "/about",
+    to: "/#about",
+    type: "anchor",
   },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+
+  const renderMenuItem = (item: (typeof menuItems)[number]) => {
+    const className = `
+      text-sm
+      text-white/70
+      transition
+      hover:text-white
+    `;
+
+    if (item.type === "route") {
+      return (
+        <Link key={item.label} to={item.to} className={className}>
+          {item.label}
+        </Link>
+      );
+    }
+
+    return (
+      <a key={item.label} href={item.to} className={className}>
+        {item.label}
+      </a>
+    );
+  };
 
   return (
     <header
@@ -46,8 +73,6 @@ export default function Navbar() {
         px-6
         "
       >
-        {/* Logo */}
-
         <Link
           to="/"
           className="
@@ -59,8 +84,6 @@ export default function Navbar() {
           TERZİ MURAT
         </Link>
 
-        {/* Desktop Menu */}
-
         <nav
           className="
           hidden
@@ -69,23 +92,8 @@ export default function Navbar() {
           gap-8
           "
         >
-          {menuItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              className="
-              text-sm
-              text-white/70
-              transition
-              hover:text-white
-              "
-            >
-              {item.label}
-            </Link>
-          ))}
+          {menuItems.map(renderMenuItem)}
         </nav>
-
-        {/* CTA + Mobile */}
 
         <div
           className="
@@ -111,7 +119,7 @@ export default function Navbar() {
             hover:bg-white
             "
           >
-            Randevu Oluştur
+            Takımını Oluştur
           </Link>
 
           <button
@@ -126,44 +134,57 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-
       {open && (
         <div
           className="
-            md:hidden
-            absolute
-            top-20
-            left-0
-            w-full
-            bg-black
-            z-50
-            border-t
-            border-white/10
-            "
+          md:hidden
+          absolute
+          top-20
+          left-0
+          w-full
+          bg-black
+          z-50
+          border-t
+          border-white/10
+          "
         >
-          {menuItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              onClick={() => setOpen(false)}
-              className="
-                  block
+          <div className="flex flex-col">
+            {menuItems.map((item) =>
+              item.type === "route" ? (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="
                   px-6
                   py-5
                   text-white/70
                   hover:text-white
                   "
-            >
-              {item.label}
-            </Link>
-          ))}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.to}
+                  onClick={() => setOpen(false)}
+                  className="
+                  px-6
+                  py-5
+                  text-white/70
+                  hover:text-white
+                  "
+                >
+                  {item.label}
+                </a>
+              ),
+            )}
 
-          <Link
-            to="/create-your-suit"
-            onClick={() => setOpen(false)}
-            className="
-              block
+            <Link
+              to="/create-your-suit"
+              onClick={() => setOpen(false)}
+              className="
               mx-6
               my-5
               text-center
@@ -174,9 +195,10 @@ export default function Navbar() {
               uppercase
               tracking-[0.2em]
               "
-          >
-            Randevu Oluştur
-          </Link>
+            >
+              Takımını Oluştur
+            </Link>
+          </div>
         </div>
       )}
     </header>

@@ -1,24 +1,25 @@
 export const features = [
   {
-    title: "Kişiye Özel Dikim",
+    title: "Kişiye Özel Kalıp",
     description:
-      "Her vücut yapısına özel hazırlanan kusursuz kalıp ve ölçü deneyimi.",
+      "Vücut ölçüleriniz ve duruşunuza göre hazırlanan özel kalıplarla kusursuz uyum.",
   },
 
   {
-    title: "Premium Kumaş",
+    title: "Seçkin Kumaş Koleksiyonu",
     description:
-      "Kaliteli dokular ve seçkin kumaş alternatifleriyle özel koleksiyonlar.",
+      "Damatlık ve nişan takımlarınız için özenle seçilmiş premium kumaş alternatifleri.",
   },
 
   {
-    title: "Uzman İşçilik",
+    title: "Usta Terzilik",
     description:
-      "15 yılı aşkın deneyimle gelen geleneksel terzilik ve modern tasarım.",
+      "Geleneksel terzilik deneyimi ve modern tasarım anlayışıyla kusursuz işçilik.",
   },
 
   {
-    title: "Müşteri Memnuniyeti",
-    description: "Her detayda mükemmellik hedefleyen kişisel hizmet anlayışı.",
+    title: "Özel Gün Deneyimi",
+    description:
+      "İlk görüşmeden son provaya kadar kişisel ve ayrıcalıklı bir hizmet süreci.",
   },
 ];
