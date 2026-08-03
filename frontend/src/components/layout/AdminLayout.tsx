@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
+import PageTransition from "../shared/PageTransition";
 
 export default function AdminLayout() {
   return (
@@ -11,7 +12,9 @@ export default function AdminLayout() {
         <AdminHeader />
 
         <div className="p-10">
-          <Outlet />
+          <PageTransition>
+            <Outlet />
+          </PageTransition>
         </div>
       </main>
     </div>

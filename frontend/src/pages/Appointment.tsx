@@ -4,6 +4,8 @@ import type { Suit } from "@/types/suit";
 import { useState } from "react";
 import { createAppointment } from "@/services/appointmentService";
 import SEO from "@/components/seo/SEO";
+import ErrorMessage from "@/components/shared/ErrorMessage";
+import LoadingSpinner from "@/components/shared/LoadingSpinner";
 
 type AppointmentState = {
   suit: Suit;
@@ -13,14 +15,13 @@ type AppointmentState = {
 const Appointment = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
-
-  const [error, setError] = useState("");
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -46,7 +47,7 @@ const Appointment = () => {
       return;
     }
 
-    if (!suit || !price) {
+    if (!suit || price === undefined) {
       setError("Takım bilgileri bulunamadı.");
       return;
     }
@@ -251,19 +252,8 @@ text-[#C8A45D]
           )}
 
           {error && (
-            <div
-              className="
-    mb-6
-    border
-    border-red-500/30
-    bg-red-500/10
-    px-5
-    py-4
-    text-sm
-    text-red-300
-    "
-            >
-              {error}
+            <div className="mb-6">
+              <ErrorMessage message={error} />
             </div>
           )}
           {submitted ? (
@@ -345,6 +335,7 @@ font-luxury
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Ad Soyad"
+                disabled={loading}
                 className="
             w-full
             bg-white/5
@@ -367,6 +358,7 @@ duration-300
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="E-posta"
+                disabled={loading}
                 className="
             w-full
             bg-white/5
@@ -389,6 +381,7 @@ duration-300
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Telefon"
+                disabled={loading}
                 className="
             w-full
             bg-white/5
@@ -410,6 +403,7 @@ duration-300
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Özel talepleriniz..."
+                disabled={loading}
                 rows={5}
                 className="
             w-full
@@ -448,7 +442,14 @@ disabled:opacity-50
 disabled:cursor-not-allowed
             "
               >
-                {loading ? "Gönderiliyor..." : "Randevu Talebi Gönder"}
+                {loading ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <LoadingSpinner />
+                    <span>Gönderiliyor...</span>
+                  </div>
+                ) : (
+                  "Randevu Talebi Gönder"
+                )}
               </button>
             </form>
           )}

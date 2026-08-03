@@ -7,7 +7,7 @@ import AdminAppointments from "@/pages/admin/AdminAppointments";
 import AdminLayout from "@/components/layout/AdminLayout";
 import Dashboard from "@/pages/admin/Dashboard";
 import PublicLayout from "@/components/layout/PublicLayout";
-import NotFound from "@/pages/NotFound";
+import ProtectedRoute from "@/auth/ProtectedRoute";
 
 const AppRouter = () => {
   return (
@@ -22,12 +22,13 @@ const AppRouter = () => {
       </Route>
 
       {/* ADMIN */}
-      <Route path="/admin" element={<AdminLayout />}>
-        <Route index element={<Dashboard />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
 
-        <Route path="appointments" element={<AdminAppointments />} />
+          <Route path="appointments" element={<AdminAppointments />} />
+        </Route>
       </Route>
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

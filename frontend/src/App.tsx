@@ -1,11 +1,16 @@
 import AppRouter from "@/routes/AppRouter";
 import { Toaster } from "react-hot-toast";
 import ScrollToTopButton from "./components/shared/ScrollToTopButton";
+import ScrollToTop from "./components/shared/ScrollToTop";
+import { AuthProvider } from "./auth/AuthContext";
 
 function App() {
   return (
     <div className="min-h-screen bg-black">
-      <AppRouter />
+      <ScrollToTop />
+      <AuthProvider>
+        <AppRouter />
+      </AuthProvider>
       <ScrollToTopButton />
       <Toaster
         position="top-right"

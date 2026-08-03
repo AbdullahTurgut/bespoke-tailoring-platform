@@ -1,5 +1,5 @@
-import api from "@/api/axios";
 import axios from "axios";
+import api from "@/lib/axios";
 import type {
   AppointmentRequest,
   Appointment,
