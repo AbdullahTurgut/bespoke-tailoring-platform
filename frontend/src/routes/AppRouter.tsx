@@ -7,6 +7,7 @@ import AdminAppointments from "@/pages/admin/AdminAppointments";
 import AdminLayout from "@/components/layout/AdminLayout";
 import Dashboard from "@/pages/admin/Dashboard";
 import PublicLayout from "@/components/layout/PublicLayout";
+import NotFound from "@/pages/NotFound";
 
 const AppRouter = () => {
   return (
@@ -26,6 +27,7 @@ const AppRouter = () => {
 
         <Route path="appointments" element={<AdminAppointments />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

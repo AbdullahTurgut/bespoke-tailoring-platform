@@ -1,6 +1,6 @@
 import { features } from "../../data/features";
 
-const WhyUs = () => {
+const AboutSection = () => {
   return (
     <section
       id="about"
@@ -140,4 +140,4 @@ const WhyUs = () => {
   );
 };
 
-export default WhyUs;
+export default AboutSection;
