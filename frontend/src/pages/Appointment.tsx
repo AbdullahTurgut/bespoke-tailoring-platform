@@ -3,6 +3,7 @@ import { fabricNames, lapelNames, buttonNames } from "@/constants/suitOptions";
 import type { Suit } from "@/types/suit";
 import { useState } from "react";
 import { createAppointment } from "@/services/appointmentService";
+import SEO from "@/components/seo/SEO";
 
 type AppointmentState = {
   suit: Suit;
@@ -88,8 +89,14 @@ const Appointment = () => {
   const { suit, price } = (location.state as AppointmentState) || {};
 
   return (
-    <main
-      className="
+    <>
+      <SEO
+        title="Randevu Oluştur | Terzi Murat"
+        description="Size özel damatlık ve nişan takımınız için Terzi Murat ile kişisel görüşme randevusu oluşturun."
+      />
+
+      <main
+        className="
       min-h-screen
       bg-[#0B0B0B]
       text-white
@@ -97,155 +104,155 @@ const Appointment = () => {
       md:px-16
       py-24
       "
-    >
-      <div
-        className="
+      >
+        <div
+          className="
         max-w-3xl
         mx-auto
         "
-      >
-        <div className="text-center mb-16">
-          <span
-            className="
+        >
+          <div className="text-center mb-16">
+            <span
+              className="
             text-xs
             uppercase
             tracking-[0.5em]
             text-[#C8A45D]
             "
-          >
-            Kişiye Özel Randevu
-          </span>
+            >
+              Kişiye Özel Randevu
+            </span>
 
-          <h1
-            className="
+            <h1
+              className="
             mt-6
             text-5xl
             md:text-7xl
             font-luxury
             "
-          >
-            Sizin Tarzınız
-          </h1>
+            >
+              Sizin Tarzınız
+            </h1>
 
-          <p
-            className="
+            <p
+              className="
             mt-6
             text-gray-400
             text-lg
             "
-          >
-            Size özel takım elbiseniz için uzman terzimizle görüşme oluşturun.
-          </p>
-        </div>
-        {suit && (
-          <div
-            className="
+            >
+              Size özel takım elbiseniz için uzman terzimizle görüşme oluşturun.
+            </p>
+          </div>
+          {suit && (
+            <div
+              className="
 mb-10
 border
 border-white/10
 p-6
 bg-white/5
 "
-          >
-            <h3
-              className="
+            >
+              <h3
+                className="
 text-[#C8A45D]
 uppercase
 tracking-[0.3em]
 text-xs
 "
-            >
-              Seçilen Takım Elbise Detayları
-            </h3>
-            <div className="space-y-6 mt-8">
-              <div>
-                <p
-                  className="
+              >
+                Seçilen Takım Elbise Detayları
+              </h3>
+              <div className="space-y-6 mt-8">
+                <div>
+                  <p
+                    className="
       text-xs
       uppercase
       tracking-[0.3em]
       text-gray-500
       "
-                >
-                  Fabric
-                </p>
+                  >
+                    Fabric
+                  </p>
 
-                <p className="mt-2 text-white text-lg">
-                  {fabricNames[suit.fabric as keyof typeof fabricNames]}
-                </p>
-              </div>
+                  <p className="mt-2 text-white text-lg">
+                    {fabricNames[suit.fabric as keyof typeof fabricNames]}
+                  </p>
+                </div>
 
-              <div>
-                <p
-                  className="
+                <div>
+                  <p
+                    className="
       text-xs
       uppercase
       tracking-[0.3em]
       text-gray-500
       "
-                >
-                  Lapel
-                </p>
+                  >
+                    Lapel
+                  </p>
 
-                <p className="mt-2 text-white text-lg">
-                  {lapelNames[suit.lapel as keyof typeof lapelNames]}
-                </p>
-              </div>
+                  <p className="mt-2 text-white text-lg">
+                    {lapelNames[suit.lapel as keyof typeof lapelNames]}
+                  </p>
+                </div>
 
-              <div>
-                <p
-                  className="
+                <div>
+                  <p
+                    className="
       text-xs
       uppercase
       tracking-[0.3em]
       text-gray-500
       "
-                >
-                  Button
-                </p>
+                  >
+                    Button
+                  </p>
 
-                <p className="mt-2 text-white text-lg">
-                  {buttonNames[suit.button as keyof typeof buttonNames]}
-                </p>
+                  <p className="mt-2 text-white text-lg">
+                    {buttonNames[suit.button as keyof typeof buttonNames]}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div
-              className="
+              <div
+                className="
 mt-10
 pt-6
 border-t
 border-white/10
 "
-            >
-              <p
-                className="
+              >
+                <p
+                  className="
 text-xs
 uppercase
 tracking-[0.4em]
 text-gray-500
 "
-              >
-                Tahmini Fiyat
-              </p>
+                >
+                  Tahmini Fiyat
+                </p>
 
-              <p
-                className="
+                <p
+                  className="
 mt-3
 text-4xl
 font-luxury
 text-[#C8A45D]
 "
-              >
-                {price.toLocaleString("tr-TR")} ₺
-              </p>
+                >
+                  {price.toLocaleString("tr-TR")} ₺
+                </p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {error && (
-          <div
-            className="
+          {error && (
+            <div
+              className="
     mb-6
     border
     border-red-500/30
@@ -255,13 +262,13 @@ text-[#C8A45D]
     text-sm
     text-red-300
     "
-          >
-            {error}
-          </div>
-        )}
-        {submitted ? (
-          <div
-            className="
+            >
+              {error}
+            </div>
+          )}
+          {submitted ? (
+            <div
+              className="
 text-center
   border
   border-white/10
@@ -271,73 +278,74 @@ text-center
   shadow-2xl
   animate-fade-in
 "
-          >
-            <div
-              className="
+            >
+              <div
+                className="
 text-[#C8A45D]
 text-4xl
 mb-6
 "
-            >
-              ✓
-            </div>
+              >
+                ✓
+              </div>
 
-            <h2
-              className="
+              <h2
+                className="
 text-4xl
 font-luxury
 "
-            >
-              Randevu Talebiniz Alındı
-            </h2>
+              >
+                Randevu Talebiniz Alındı
+              </h2>
 
-            <p
-              className="
+              <p
+                className="
 mt-6
 text-gray-400
 leading-relaxed
 "
-            >
-              Sayın {formData.name}, özel dikim talebiniz başarıyla oluşturuldu.
-              <br />
-              Ekibimiz en kısa sürede sizinle iletişime geçecektir.
-            </p>
+              >
+                Sayın {formData.name}, özel dikim talebiniz başarıyla
+                oluşturuldu.
+                <br />
+                Ekibimiz en kısa sürede sizinle iletişime geçecektir.
+              </p>
 
-            <div
-              className="
+              <div
+                className="
 mt-8
 border-t
 border-white/10
 pt-6
 "
-            >
-              <p className="text-sm text-gray-500">Tahmini Fiyat</p>
+              >
+                <p className="text-sm text-gray-500">Tahmini Fiyat</p>
 
-              <p
-                className="
+                <p
+                  className="
 mt-2
 text-3xl
 font-luxury
 "
-              >
-                {price.toLocaleString("tr-TR")} ₺
-              </p>
+                >
+                  {price.toLocaleString("tr-TR")} ₺
+                </p>
+              </div>
             </div>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="
           space-y-6
           "
-          >
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Ad Soyad"
-              className="
+            >
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Ad Soyad"
+                className="
             w-full
             bg-white/5
             border
@@ -351,15 +359,15 @@ focus:ring-[#C8A45D]/40
 transition-all
 duration-300
             "
-            />
+              />
 
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="E-posta"
-              className="
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="E-posta"
+                className="
             w-full
             bg-white/5
             border
@@ -373,15 +381,15 @@ focus:ring-[#C8A45D]/40
 transition-all
 duration-300
             "
-            />
+              />
 
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Telefon"
-              className="
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Telefon"
+                className="
             w-full
             bg-white/5
             border
@@ -395,15 +403,15 @@ focus:ring-[#C8A45D]/40
 transition-all
 duration-300
             "
-            />
+              />
 
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Özel talepleriniz..."
-              rows={5}
-              className="
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Özel talepleriniz..."
+                rows={5}
+                className="
             w-full
             bg-white/5
             border
@@ -417,12 +425,12 @@ focus:ring-[#C8A45D]/40
 transition-all
 duration-300
             "
-            />
+              />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="
+              <button
+                type="submit"
+                disabled={loading}
+                className="
              w-full
 rounded-full
 bg-[#C8A45D]
@@ -439,13 +447,14 @@ hover:-translate-y-1
 disabled:opacity-50
 disabled:cursor-not-allowed
             "
-            >
-              {loading ? "Gönderiliyor..." : "Randevu Talebi Gönder"}
-            </button>
-          </form>
-        )}
-      </div>
-    </main>
+              >
+                {loading ? "Gönderiliyor..." : "Randevu Talebi Gönder"}
+              </button>
+            </form>
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 

@@ -5,6 +5,8 @@ import Reviews from "../components/home/Reviews";
 import AtelierGallery from "../components/home/AtelierGallery";
 import SignatureCTA from "@/components/home/SignatureCTA";
 import SEO from "@/components/seo/SEO";
+import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+
 const Home = () => {
   return (
     <>
@@ -12,6 +14,7 @@ const Home = () => {
         title="Terzi Murat | Kişiye Özel Damatlık ve Nişan Takımları"
         description="Özel dikim damatlık ve nişan takımları için premium terzilik deneyimi."
       />
+      <LocalBusinessSchema />
       <main>
         <Hero />
 
