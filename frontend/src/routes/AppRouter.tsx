@@ -8,6 +8,7 @@ import AdminLayout from "@/components/layout/AdminLayout";
 import Dashboard from "@/pages/admin/Dashboard";
 import PublicLayout from "@/components/layout/PublicLayout";
 import ProtectedRoute from "@/auth/ProtectedRoute";
+import AdminLogin from "@/pages/admin/AdminLogin";
 
 const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ const AppRouter = () => {
         <Route path="/appointment" element={<Appointment />} />
       </Route>
 
+      <Route path="/admin/login" element={<AdminLogin />} />
       {/* ADMIN */}
       <Route element={<ProtectedRoute />}>
         <Route path="/admin" element={<AdminLayout />}>

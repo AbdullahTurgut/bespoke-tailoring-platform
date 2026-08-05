@@ -1,4 +1,21 @@
+import { LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/auth/useAuth";
+import toast from "react-hot-toast";
 export default function AdminHeader() {
+  const { logout } = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+
+    toast.success("Oturum başarıyla kapatıldı.");
+
+    navigate("/admin/login", {
+      replace: true,
+    });
+  };
   return (
     <header
       className="
@@ -49,6 +66,31 @@ export default function AdminHeader() {
         >
           Admin
         </p>
+      </div>
+      <div className="flex items-center gap-6">
+        <div className="text-right">
+          <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
+            Yönetici
+          </p>
+
+          <p className="text-white">Admin Panel</p>
+        </div>
+
+        <button
+          onClick={handleLogout}
+          className="
+    flex
+    items-center
+    gap-2
+    text-red-400
+    hover:text-red-300
+    transition
+    "
+        >
+          <LogOut size={18} />
+
+          <span className="text-sm uppercase tracking-[0.2em]">Çıkış Yap</span>
+        </button>
       </div>
     </header>
   );
