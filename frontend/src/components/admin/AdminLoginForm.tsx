@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/useAuth";
-
+import { login as loginRequest } from "@/services/authService";
 const AdminLoginForm = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -35,17 +35,16 @@ const AdminLoginForm = () => {
     setLoading(true);
 
     try {
-      /*
-       * Şimdilik demo login.
-       * JWT entegrasyonunda burası authService.login()
-       * olacak.
-       */
+      const response = await loginRequest({
+        email: formData.email,
+        password: formData.password,
+      });
 
-      login();
+      login(response.token);
 
-      navigate("/admin");
+      navigate("/admin/appointments");
     } catch {
-      setError("Giriş sırasında bir hata oluştu.");
+      setError("E-posta veya şifre hatalı.");
     } finally {
       setLoading(false);
     }

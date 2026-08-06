@@ -1,7 +1,12 @@
 import DashboardStats from "@/components/admin/DashboardStats";
+import DashboardAnalytics from "@/components/admin/DashboardAnalytics";
 import useAppointments from "@/hooks/useAppointments";
 import RecentAppointments from "@/components/admin/RecentAppointments";
 import ActivitySummary from "@/components/admin/ActivitySummary";
+import DashboardCharts from "@/components/admin/DashboardCharts";
+import StatusDonutChart from "@/components/admin/StatusDonutChart";
+import MonthlyAppointmentChart from "@/components/admin/MonthlyAppointmentChart";
+
 export default function Dashboard() {
   const { appointments, loading } = useAppointments();
 
@@ -9,8 +14,8 @@ export default function Dashboard() {
     return (
       <div
         className="
-         max-w-7xl
-    mx-auto
+        max-w-7xl
+        mx-auto
         flex
         min-h-[60vh]
         items-center
@@ -55,15 +60,24 @@ export default function Dashboard() {
 
       <DashboardStats appointments={appointments} />
 
+      <DashboardAnalytics appointments={appointments} />
+
+      <DashboardCharts appointments={appointments} />
+
       <div
         className="
-  grid
-  gap-6
-  lg:grid-cols-2
-  "
+ grid
+ gap-6
+ lg:grid-cols-2
+ "
       >
         <RecentAppointments appointments={appointments} />
-        <ActivitySummary appointments={appointments} />{" "}
+
+        <ActivitySummary appointments={appointments} />
+
+        <StatusDonutChart appointments={appointments} />
+
+        <MonthlyAppointmentChart appointments={appointments} />
       </div>
     </div>
   );

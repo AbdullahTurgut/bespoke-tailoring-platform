@@ -7,9 +7,12 @@ import type { AppointmentStatus } from "@/types/appointment";
 import AppointmentDetailModal from "@/components/admin/AppointmentDetailModal";
 import { updateAppointmentStatus } from "@/services/appointmentService";
 import toast from "react-hot-toast";
-
+import Pagination from "@/components/admin/Pagination";
 const AdminAppointments = () => {
   const { appointments, setAppointments, loading } = useAppointments();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 10;
   const [activeFilter, setActiveFilter] = useState<AppointmentStatus | "ALL">(
     "ALL",
   );
@@ -23,6 +26,13 @@ const AdminAppointments = () => {
       : appointments.filter(
           (appointment) => appointment.status === activeFilter,
         );
+
+  const totalPages = Math.ceil(filteredAppointments.length / itemsPerPage);
+
+  const paginatedAppointments = filteredAppointments.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
 
   if (loading) {
     return (
@@ -96,15 +106,22 @@ mx-auto"
       <div className="mb-8">
         <AppointmentFilters
           activeFilter={activeFilter}
-          onFilterChange={setActiveFilter}
+          onFilterChange={(filter) => {
+            setActiveFilter(filter);
+            setCurrentPage(1);
+          }}
         />
       </div>
 
       <AppointmentTable
-        appointments={filteredAppointments}
+        appointments={paginatedAppointments}
         onDetail={setSelectedAppointment}
       />
-
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
       <AppointmentDetailModal
         appointment={selectedAppointment}
         onClose={() => setSelectedAppointment(null)}

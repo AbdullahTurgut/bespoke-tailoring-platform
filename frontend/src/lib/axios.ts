@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken, removeToken } from "@/utils/auth";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -20,7 +21,10 @@ api.interceptors.response.use(
           break;
 
         case 401:
-          console.error("Yetkisiz erişim");
+          removeToken();
+          if (window.location.pathname !== "/admin/login") {
+            window.location.href = "/admin/login";
+          }
           break;
 
         case 403:
@@ -43,7 +47,7 @@ api.interceptors.response.use(
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("adminToken");
+    const token = getToken();
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

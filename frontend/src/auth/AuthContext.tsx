@@ -1,26 +1,25 @@
 import { createContext, useState, type ReactNode } from "react";
+import { getToken, removeToken, setToken } from "@/utils/auth";
 
 type AuthContextType = {
   isAuthenticated: boolean;
-  login: () => void;
+  login: (token: string) => void;
   logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    Boolean(localStorage.getItem("adminToken")),
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(Boolean(getToken()));
 
-  const login = () => {
-    localStorage.setItem("adminToken", "demo-token");
+  const login = (token: string) => {
+    setToken(token);
 
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    localStorage.removeItem("adminToken");
+    removeToken();
     setIsAuthenticated(false);
   };
 
