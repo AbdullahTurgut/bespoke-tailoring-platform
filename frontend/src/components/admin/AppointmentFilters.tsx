@@ -1,42 +1,68 @@
-import type { AppointmentStatus } from "@/types/appointment";
+import type { Appointment, AppointmentStatus } from "@/types/appointment";
 
 type FilterValue = AppointmentStatus | "ALL";
 
 type Props = {
   activeFilter: FilterValue;
   onFilterChange: (filter: FilterValue) => void;
+  appointments: Appointment[];
 };
-
-const filters: {
-  label: string;
-  value: FilterValue;
-}[] = [
-  {
-    label: "Tümü",
-    value: "ALL",
-  },
-  {
-    label: "Bekleyen",
-    value: "PENDING",
-  },
-  {
-    label: "İletişime Geçildi",
-    value: "CONTACTED",
-  },
-  {
-    label: "Tamamlandı",
-    value: "COMPLETED",
-  },
-  {
-    label: "İptal",
-    value: "CANCELLED",
-  },
-];
 
 export default function AppointmentFilters({
   activeFilter,
   onFilterChange,
+  appointments,
 }: Props) {
+  const total = appointments.length;
+
+  const pending = appointments.filter(
+    (appointment) => appointment.status === "PENDING",
+  ).length;
+
+  const contacted = appointments.filter(
+    (appointment) => appointment.status === "CONTACTED",
+  ).length;
+
+  const completed = appointments.filter(
+    (appointment) => appointment.status === "COMPLETED",
+  ).length;
+
+  const cancelled = appointments.filter(
+    (appointment) => appointment.status === "CANCELLED",
+  ).length;
+
+  const filters: {
+    label: string;
+    value: FilterValue;
+    count: number;
+  }[] = [
+    {
+      label: "Tümü",
+      value: "ALL",
+      count: total,
+    },
+    {
+      label: "Bekleyen",
+      value: "PENDING",
+      count: pending,
+    },
+    {
+      label: "İletişime Geçildi",
+      value: "CONTACTED",
+      count: contacted,
+    },
+    {
+      label: "Tamamlandı",
+      value: "COMPLETED",
+      count: completed,
+    },
+    {
+      label: "İptal",
+      value: "CANCELLED",
+      count: cancelled,
+    },
+  ];
+
   return (
     <div
       className="
@@ -60,6 +86,9 @@ export default function AppointmentFilters({
             key={filter.value}
             onClick={() => onFilterChange(filter.value)}
             className={`
+            flex
+            items-center
+            gap-2
             rounded-full
             px-6
             py-3
@@ -90,7 +119,24 @@ export default function AppointmentFilters({
             }
             `}
           >
-            {filter.label}
+            <span>{filter.label}</span>
+
+            <span
+              className={`
+              rounded-full
+              px-2
+              py-1
+              text-[10px]
+              font-semibold
+              ${
+                isActive
+                  ? "bg-black/20 text-black"
+                  : "bg-[#C8A45D]/10 text-[#C8A45D]"
+              }
+              `}
+            >
+              {filter.count}
+            </span>
           </button>
         );
       })}

@@ -9,7 +9,7 @@ import Dashboard from "@/pages/admin/Dashboard";
 import PublicLayout from "@/components/layout/PublicLayout";
 import ProtectedRoute from "@/auth/ProtectedRoute";
 import AdminLogin from "@/pages/admin/AdminLogin";
-
+import About from "@/pages/About";
 const AppRouter = () => {
   return (
     <Routes>
@@ -20,6 +20,8 @@ const AppRouter = () => {
         <Route path="/create-your-suit" element={<CreateSuit />} />
 
         <Route path="/appointment" element={<Appointment />} />
+
+        <Route path="/about" element={<About />} />
       </Route>
 
       <Route path="/admin/login" element={<AdminLogin />} />

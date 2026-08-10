@@ -20,8 +20,8 @@ const menuItems = [
   },
   {
     label: "Hakkımızda",
-    to: "/#about",
-    type: "anchor",
+    to: "/about",
+    type: "route",
   },
 ];
 

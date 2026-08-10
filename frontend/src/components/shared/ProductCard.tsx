@@ -31,13 +31,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
           src={product.image}
           alt={product.name}
           className="
-          w-full
-          h-full
-          object-cover
-          transition-transform
-          duration-500
-          group-hover:scale-110
-          "
+    w-full
+    h-full
+    object-cover
+    transition-transform
+    duration-700
+    ease-out
+    group-hover:scale-[1.03]
+  "
         />
 
         {/* Favorite Button */}

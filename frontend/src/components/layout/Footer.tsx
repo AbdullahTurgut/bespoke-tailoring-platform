@@ -4,34 +4,34 @@ const Footer = () => {
   return (
     <footer
       className="
-      bg-[#050505]
-      text-white
       border-t
       border-white/10
+      bg-black
+      text-white
       "
     >
       <div
         className="
-        max-w-7xl
         mx-auto
+        max-w-7xl
         px-6
-        md:px-16
-        py-20
+        py-16
+        lg:px-8
         "
       >
         <div
           className="
           grid
-          grid-cols-1
-          md:grid-cols-4
           gap-12
+          md:grid-cols-2
+          lg:grid-cols-4
           "
         >
           {/* Brand */}
 
           <div
             className="
-            md:col-span-2
+            lg:col-span-1
             "
           >
             <Link
@@ -56,6 +56,18 @@ const Footer = () => {
               Düğün ve nişan günleriniz için özel ölçüler, seçkin kumaşlar ve
               usta işçilikle hazırlanan kişiye özel takım elbiseler.
             </p>
+
+            <p
+              className="
+              mt-6
+              text-xs
+              uppercase
+              tracking-[0.25em]
+              text-[#C8A45D]
+              "
+            >
+              2004'ten beri
+            </p>
           </div>
 
           {/* Navigation */}
@@ -63,11 +75,11 @@ const Footer = () => {
           <div>
             <h3
               className="
+              mb-6
               text-xs
               uppercase
               tracking-[0.3em]
               text-[#C8A45D]
-              mb-6
               "
             >
               Keşfet
@@ -81,19 +93,30 @@ const Footer = () => {
               "
             >
               <li>
-                <a href="/#wedding">Damatlıklar</a>
+                <a href="/#wedding" className="transition hover:text-white">
+                  Damatlıklar
+                </a>
               </li>
 
               <li>
-                <a href="/#engagement">Nişan Takımları</a>
+                <a href="/#engagement" className="transition hover:text-white">
+                  Nişan Takımları
+                </a>
               </li>
 
               <li>
-                <Link to="/create-your-suit">Özel Tasarım</Link>
+                <Link
+                  to="/create-your-suit"
+                  className="transition hover:text-white"
+                >
+                  Özel Tasarım
+                </Link>
               </li>
 
               <li>
-                <a href="#about">Hakkımızda</a>
+                <Link to="/about" className="transition hover:text-white">
+                  Hakkımızda
+                </Link>
               </li>
             </ul>
           </div>
@@ -103,11 +126,11 @@ const Footer = () => {
           <div>
             <h3
               className="
+              mb-6
               text-xs
               uppercase
               tracking-[0.3em]
               text-[#C8A45D]
-              mb-6
               "
             >
               Hizmetler
@@ -126,6 +149,75 @@ const Footer = () => {
               <li>Usta Terzilik</li>
             </ul>
           </div>
+
+          {/* Contact */}
+
+          <div>
+            <h3
+              className="
+              mb-6
+              text-xs
+              uppercase
+              tracking-[0.3em]
+              text-[#C8A45D]
+              "
+            >
+              İletişim
+            </h3>
+
+            <div
+              className="
+              space-y-5
+              text-sm
+              text-gray-400
+              "
+            >
+              <div>
+                <p className="mb-1 text-xs uppercase tracking-widest text-gray-600">
+                  Telefon
+                </p>
+
+                <a
+                  href="tel:+905393130983"
+                  className="transition hover:text-white"
+                >
+                  0539 313 09 83
+                </a>
+              </div>
+
+              <div>
+                <p className="mb-1 text-xs uppercase tracking-widest text-gray-600">
+                  Adres
+                </p>
+
+                <p className="leading-relaxed">
+                  Hacıhalil Mahallesi
+                  <br />
+                  1218. Sk. 7-3
+                  <br />
+                  Gebze / Kocaeli
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-1 text-xs uppercase tracking-widest text-gray-600">
+                  Çalışma Saatleri
+                </p>
+
+                <p className="leading-relaxed">
+                  Hafta içi & Cumartesi
+                  <br />
+                  10:00 – 19:00
+                </p>
+
+                <p className="mt-2 leading-relaxed">
+                  Pazar
+                  <br />
+                  12:00 – 16:00
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom */}
@@ -133,18 +225,18 @@ const Footer = () => {
         <div
           className="
           mt-16
-          pt-8
-          border-t
-          border-white/10
           flex
           flex-col
-          md:flex-row
           justify-between
           gap-4
+          border-t
+          border-white/10
+          pt-8
           text-xs
-          text-gray-500
           uppercase
           tracking-[0.2em]
+          text-gray-500
+          md:flex-row
           "
         >
           <p>© {new Date().getFullYear()} Terzi Murat</p>

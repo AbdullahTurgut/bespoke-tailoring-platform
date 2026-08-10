@@ -2,29 +2,17 @@ import { galleryImages } from "../../data/gallery";
 
 const AtelierGallery = () => {
   return (
-    <section
-      className="
-      bg-[#0F0F0F]
-      py-32
-      px-6
-      md:px-16
-      "
-    >
-      <div
-        className="
-        max-w-7xl
-        mx-auto
-        "
-      >
+    <section className="bg-[#0B0B0B] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
         {/* Header */}
 
-        <div className="text-center mb-20">
+        <div className="mb-20 text-center">
           <span
             className="
-            text-[#C8A45D]
-            uppercase
-            tracking-[0.5em]
-            text-xs
+              text-xs
+              uppercase
+              tracking-[0.5em]
+              text-[#C8A45D]
             "
           >
             Terzi Murat Atölyesi
@@ -32,12 +20,12 @@ const AtelierGallery = () => {
 
           <h2
             className="
-            mt-6
-            text-5xl
-            md:text-7xl
-            font-luxury
-            text-white
-            font-light
+              mt-6
+              font-luxury
+              text-5xl
+              font-light
+              text-white
+              md:text-7xl
             "
           >
             Ustalığın
@@ -47,11 +35,11 @@ const AtelierGallery = () => {
 
           <p
             className="
-            mt-8
-            text-gray-400
-            max-w-2xl
-            mx-auto
-            leading-relaxed
+              mx-auto
+              mt-8
+              max-w-2xl
+              leading-relaxed
+              text-gray-400
             "
           >
             Her kumaş, her ölçü ve her detay; kişiye özel bir takım elbisenin
@@ -63,37 +51,39 @@ const AtelierGallery = () => {
 
         <div
           className="
-          grid
-          grid-cols-1
-          md:grid-cols-3
-          auto-rows-[280px]
-          gap-6
+            grid
+            auto-rows-[280px]
+            grid-cols-1
+            gap-6
+            md:grid-cols-3
           "
         >
           {galleryImages.map((image) => (
             <div
               key={image.title}
               className={`
-              group
-              relative
-              overflow-hidden
-              rounded-2xl
-              transition-all
-              duration-700
-              hover:-translate-y-2
-              ${image.large ? "md:col-span-2 md:row-span-2" : ""}
+                group
+                relative
+                overflow-hidden
+                rounded-2xl
+                transition-all
+                duration-700
+                hover:-translate-y-1
+                ${image.large ? "md:col-span-2 md:row-span-2" : ""}
               `}
             >
               <img
                 src={image.src}
                 alt={image.title}
                 className="
-                w-full
-                h-full
-                object-cover
-                transition-transform
-                duration-700
-                group-hover:scale-110
+                  h-full
+                  w-full
+                  object-cover
+                  brightness-[0.92]
+                  transition-all
+                  duration-700
+                  group-hover:scale-105
+                  group-hover:brightness-100
                 "
               />
 
@@ -101,27 +91,28 @@ const AtelierGallery = () => {
 
               <div
                 className="
-                absolute
-                inset-0
-                bg-linear-to-t
-                from-black/90
-                via-black/20
-                to-transparent
-                opacity-0
-                group-hover:opacity-100
-                transition
-                duration-500
-                flex
-                items-end
-                p-8
+                  absolute
+                  inset-0
+                  flex
+                  items-end
+                  bg-gradient-to-t
+                  from-black/90
+                  via-black/20
+                  to-transparent
+                  p-8
+                  opacity-100
+                  transition
+                  duration-500
+                  md:opacity-0
+                  md:group-hover:opacity-100
                 "
               >
                 <div>
                   <h3
                     className="
-                    text-white
-                    text-3xl
-                    font-luxury
+                      font-luxury
+                      text-3xl
+                      text-white
                     "
                   >
                     {image.title}
@@ -129,11 +120,11 @@ const AtelierGallery = () => {
 
                   <p
                     className="
-                    mt-3
-                    text-gray-300
-                    text-sm
-                    max-w-sm
-                    leading-relaxed
+                      mt-3
+                      max-w-sm
+                      text-sm
+                      leading-relaxed
+                      text-gray-300
                     "
                   >
                     {image.description}
@@ -141,13 +132,13 @@ const AtelierGallery = () => {
 
                   <div
                     className="
-                    mt-5
-                    w-12
-                    h-px
-                    bg-[#C8A45D]
-                    transition-all
-                    duration-500
-                    group-hover:w-24
+                      mt-5
+                      h-px
+                      w-12
+                      bg-[#C8A45D]
+                      transition-all
+                      duration-500
+                      md:group-hover:w-24
                     "
                   />
                 </div>

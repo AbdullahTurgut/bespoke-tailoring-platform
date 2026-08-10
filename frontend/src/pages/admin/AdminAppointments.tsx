@@ -8,6 +8,7 @@ import AppointmentDetailModal from "@/components/admin/AppointmentDetailModal";
 import { updateAppointmentStatus } from "@/services/appointmentService";
 import toast from "react-hot-toast";
 import Pagination from "@/components/admin/Pagination";
+
 const AdminAppointments = () => {
   const { appointments, setAppointments, loading } = useAppointments();
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,16 +17,22 @@ const AdminAppointments = () => {
   const [activeFilter, setActiveFilter] = useState<AppointmentStatus | "ALL">(
     "ALL",
   );
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedAppointment, setSelectedAppointment] =
     useState<Appointment | null>(null);
 
-  const filteredAppointments =
-    activeFilter === "ALL"
-      ? appointments
-      : appointments.filter(
-          (appointment) => appointment.status === activeFilter,
-        );
+  const filteredAppointments = appointments.filter((appointment) => {
+    const matchesStatus =
+      activeFilter === "ALL" || appointment.status === activeFilter;
+
+    const search = searchTerm.toLowerCase();
+
+    const matchesSearch =
+      appointment.customerName.toLowerCase().includes(search) ||
+      appointment.phone.includes(search);
+
+    return matchesStatus && matchesSearch;
+  });
 
   const totalPages = Math.ceil(filteredAppointments.length / itemsPerPage);
 
@@ -103,14 +110,38 @@ mx-auto"
         </p>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-8 space-y-5">
         <AppointmentFilters
           activeFilter={activeFilter}
+          appointments={appointments}
           onFilterChange={(filter) => {
             setActiveFilter(filter);
             setCurrentPage(1);
           }}
         />
+
+        <div>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Müşteri adı veya telefon ara..."
+            className="
+      w-full
+      rounded-xl
+      border
+      border-white/10
+      bg-white/5
+      px-5
+      py-4
+      text-white
+      placeholder:text-gray-500
+      outline-none
+      transition
+      focus:border-[#C8A45D]
+      "
+          />
+        </div>
       </div>
 
       <AppointmentTable
