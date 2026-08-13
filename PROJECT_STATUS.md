@@ -1,495 +1,501 @@
-# Terzi Murat — Project Status
+# TERZİ MURAT — PROJECT STATUS
 
-## Project Overview
-
-**Terzi Murat** is a premium bespoke tailoring platform built with a modern full-stack architecture.
-
-The project includes:
-
-* Premium customer-facing website
-* Luxury suit configurator
-* Appointment booking system
-* Admin dashboard
-* JWT-based admin authentication system
+**Project:** Terzi Murat Premium Tailoring Platform
+**Repository:** `AbdullahTurgut/bespoke-tailoring-platform`
+**Status:** 🟢 Customer Review / Feature Freeze
+**Last Updated:** 10 August 2026
 
 ---
 
-# Tech Stack
+## 1. Project Overview
 
-## Frontend
+Terzi Murat için geliştirilen premium kişiye özel terzilik platformudur.
 
-* React + TypeScript
-* Vite
-* Tailwind CSS
-* shadcn/ui
-* React Router
-* Axios
-* React Context API
-* SEO management with React Helmet
-* Structured Data implementation
+Platform iki ana bölümden oluşmaktadır:
 
-## Backend
+### Public Website
 
-* Java Spring Boot
-* Spring Data JPA
-* Spring Security
-* JWT Authentication
-* Hibernate
-* MySQL
-* Maven
+- Premium ana sayfa
+- Damatlık koleksiyonu
+- Nişan takımları
+- Özel takım oluşturma
+- Hakkımızda
+- Atelier Gallery
+- Randevu oluşturma
+- Responsive / mobil uyumlu tasarım
 
-## Development Tools
+### Admin Panel
 
-* IntelliJ IDEA
-* VS Code
-* Git / GitHub
-* Docker Desktop
-* DBeaver
+- JWT tabanlı admin authentication
+- Dashboard
+- Randevu yönetimi
+- Randevu filtreleme
+- Randevu arama
+- Randevu detayları
+- Randevu status yönetimi
+- Pagination
+- Dashboard analytics
 
 ---
 
-# Current Branch Status
+# 2. Public Website
 
-Current branch:
+## Home
 
-```
-main
-```
+Ana sayfa premium marka hissine göre tasarlandı.
 
-Latest commit:
+Mevcut bölümler:
 
-```
-9860b94 Implement JWT authentication infrastructure for admin users
-```
+- Hero
+- Damatlık Koleksiyonu
+- Nişan Takımları
+- Why Us / Ustalık Bölümü
+- Atelier Gallery
+- Footer
 
-Repository:
+### Hero
 
-```
-bespoke-tailoring-platform
-```
-
----
-
-# Completed Features
-
-# Frontend Completed
-
-## Premium Landing Page
-
-Completed:
-
-* Luxury hero section
-* Collection sections
-* Atelier gallery
-* Reviews section
-* Premium CTA sections
-* Responsive design improvements
-
-Related commits:
-
-```
-369f157 Create luxury hero and reviews sections
-6b4af71 add atelier gallery and signature CTA section
-1139bb0 refine premium landing page experience
-e409678 Complete homepage sections and premium layout polish
-```
+- Premium takım elbise görseli
+- Luxury typography
+- Responsive iki kolon yapı
+- CTA butonları
+- Fade-in animasyonları
+- Mobil uyumluluk
 
 ---
 
-## SEO Infrastructure
+# 3. Collections
 
-Completed:
+## Damatlık Koleksiyonu
 
-* Page SEO metadata
-* Open Graph tags
-* Social sharing improvements
-* Structured data
-* Helmet provider integration
+Mevcut ürünler:
 
-Related commits:
+- Midnight Black
+- Royal Navy
 
-```
-1457861 improve seo metadata and social sharing tags
-7ade1d7 add helmet provider for seo management
-0b0fcb1 implement page seo and structured data
-```
+## Nişan Takımları
 
----
+Mevcut ürünler:
 
-## Luxury Suit Configurator
+- Executive Grey
+- Royal Charcoal
 
-Completed:
+Product Card özellikleri:
 
-* Suit customization flow
-* Fabric/color selection
-* Premium preview experience
+- Ürün görseli
+- Kategori
+- Kumaş
+- Kalıp
+- Başlangıç fiyatı
+- Değerlendirme
+- Favori butonu
+- Hover interaction
+- İncele butonu
 
-Related commit:
-
-```
-3fc0b33 complete admin dashboard and premium suit configurator polish
-```
+Ürün görselleri Fash.ai kullanılarak oluşturuldu.
 
 ---
 
-# Appointment System
+# 4. Custom Suit
 
-## Backend Completed
+Route:
 
-Implemented:
+`/create-your-suit`
 
-* Appointment Entity
-* DTO structure
-* Repository layer
-* Service layer
-* Controller layer
-* Validation
-* Global exception handling
-* Response DTO structure
-
-Related commits:
-
-```
-5737563 add appointment API with DTO service repository layers
-c5b81d3 add validation and global exception handling
-eef14aa return appointment response dto
-7bf2ba5 complete appointment management backend module
-```
+Kullanıcıların kendi takım elbiselerini oluşturmalarına yönelik özel tasarım alanı bulunmaktadır.
 
 ---
 
-## Frontend Completed
+# 5. Appointment System
 
-Implemented:
+Route:
 
-* Appointment form
-* API integration
-* Success flow
-* Shared Axios client structure
+`/appointment`
 
-Related commits:
+Kullanıcılar web sitesi üzerinden randevu oluşturabilmektedir.
 
-```
-296f033 complete appointment form flow and success screen
-416b43d complete frontend backend appointment integration
-fcda7a8 migrate appointment service to shared axios client
-```
+Appointment status değerleri:
 
----
+- `PENDING`
+- `CONTACTED`
+- `COMPLETED`
+- `CANCELLED`
 
-# Admin Dashboard
+Backend API:
 
-Completed:
+`/api/appointments`
 
-* Admin appointment management
-* Dashboard statistics
-* Appointment filtering
-* Appointment detail modal
-* Status management
-* Premium admin UI
-
-Appointment statuses:
-
-```
-PENDING
-CONTACTED
-COMPLETED
-CANCELLED
-```
-
-Related commits:
-
-```
-8220174 create admin appointment dashboard interface
-7fbe776 improve admin appointment dashboard experience
-731adad improve admin dashboard layout alignment
-dbf30e7 enhance admin panel with dashboard stats, filters and appointment management
-3fc0b33 complete admin dashboard and premium suit configurator polish
-```
+Admin tarafından status değişiklikleri yapılabilmektedir.
 
 ---
 
-# Authentication System
+# 6. Admin Authentication
 
-## Backend Authentication Infrastructure
+Admin login sistemi JWT ile çalışmaktadır.
 
-Completed:
+Mevcut yapı:
 
-Admin user authentication foundation.
-
-Implemented:
-
-```
-auth/
- ├── AuthController
- ├── AuthService
- └── dto/
-      ├── LoginRequest
-      └── LoginResponse
-
-security/
- ├── CustomUserDetailsService
- ├── JwtAuthenticationEntryPoint
- ├── JwtAuthenticationFilter
- └── JwtService
-
-config/
- └── SecurityConfig
-
-entity/
- └── AdminUser
-
-repository/
- └── AdminUserRepository
-```
-
-Features:
-
-* Spring Security configuration
-* JWT token generation
-* JWT request filtering
-* UserDetails implementation
-* Admin user repository
-
-Latest commit:
-
-```
-9860b94 Implement JWT authentication infrastructure for admin users
-```
-
----
-
-## Frontend Authentication Structure
-
-Already prepared:
-
-* Auth Provider
-* useAuth hook
-* Protected Route architecture
-
-Related commit:
-
-```
-bee94ce refactor(auth): add auth provider, useAuth hook and protected route structure
-```
-
----
-
-# Current Database State
-
-Implemented tables:
-
-* appointments
-* admin_users
-
-Admin user exists in database.
-
-Authentication user flow is ready for testing.
-
----
-
-# Current Development Point
-
-## Next Priority
-
-Complete authentication flow.
-
-Steps:
-
-### 1. Test Login Endpoint
-
-Endpoint:
-
-```
-POST /api/auth/login
-```
-
-Request:
-
-```json
-{
-  "email": "admin@terzimurat.com",
-  "password": "password"
-}
-```
-
-Expected response:
-
-```json
-{
-  "token": "JWT_TOKEN"
-}
-```
-
----
-
-### 2. Connect Frontend Login
-
-Flow:
-
-```
-Login Page
-      |
-      |
-Auth Service
-      |
-      |
-POST /api/auth/login
-      |
-      |
-Receive JWT Token
-      |
-      |
-Auth Provider
-      |
-      |
-Protected Admin Routes
-```
-
----
-
-### 3. Protect Admin Dashboard
-
-Required:
-
-* Store JWT token
-* Axios interceptor
-* Add Authorization header
-
-Example:
-
-```
-Authorization: Bearer TOKEN
-```
-
----
-
-# Future Tasks
-
-## Authentication
-
-* Complete login page
-* Connect AuthProvider
-* Add logout flow
-* Persist authentication state
-* Protect admin routes
-
----
-
-## Admin Improvements
-
-Possible future features:
-
-* Admin profile page
-* Multiple admin users
-* Role management
-* Appointment notifications
-
----
-
-## Production Preparation
-
-Future tasks:
-
-* Environment variable cleanup
-* Production database configuration
-* Docker deployment
-* CI/CD pipeline
-* Cloud deployment
-
----
-
-# Important Notes
-
-Current architecture follows:
-
-```
-React Frontend
-        |
-        |
-Axios Client
-        |
-        |
-Spring Boot API
-        |
-        |
-Spring Security JWT
-        |
-        |
-MySQL Database
-```
-
-The project is currently at the stage:
-
-```
-Premium website completed
-        +
-Appointment system completed
-        +
-Admin dashboard completed
-        +
-JWT authentication backend completed
-        |
-        v
-Frontend authentication integration
-```
-
----
-
-# Last Known Working State
-
-Before continuing:
-
-1. Backend authentication files exist.
-2. Admin user exists in database.
-3. Appointment APIs are working.
-4. Admin dashboard is functional.
-5. JWT login flow needs final integration and testing.
-
-# Authentication Integration Completed
-
-Completed:
-
-- JWT login frontend integration
-- AuthContext token management
-- Axios JWT interceptor
-- Protected admin routes
-- Login persistence
-- Logout flow
-- CORS integration with Spring Security
-
-Status:
-
-Production-ready authentication flow completed.
-
-# Authentication Integration Completed
-
-Completed:
-
-Frontend JWT integration completed.
-
-Implemented:
-
-- Real login flow with backend JWT API
-- AuthContext token management
-- JWT persistence with localStorage
-- Axios request interceptor
-- Automatic Authorization header injection
-- Protected admin routes
-- Logout flow
-- 401 unauthorized handling
-- Invalid token cleanup
+- Admin login
+- JWT token storage
+- Protected routes
+- AuthContext
+- Logout
 - JWT expiration handling
+- 401 auto logout
+- Invalid token handling
+- Refresh sonrası authentication kontrolü
 
-Authentication tests:
+### Test Edilen Senaryolar
 
-✅ Successful login
-✅ Wrong password validation
-✅ Refresh persistence
-✅ Invalid token handling
-✅ Expired JWT handling
-✅ Logout flow
+- Yanlış password → hata
+- Başarılı login → dashboard
+- F5 sonrası authentication korunuyor
+- Token silme → login ekranına dönüş
+- Bozuk token → 401 → token silme → login
+- JWT expiration → otomatik logout
+- Admin logout → başarılı logout toast
 
-Status:
+Admin hesabı backend üzerinde tanımlıdır.
 
-Production-ready authentication flow completed.
+---
+
+# 7. Admin Panel
+
+Admin layout:
+
+- Dashboard
+- Randevular
+
+## Dashboard
+
+Dashboard içerisinde:
+
+### Dashboard Stats
+
+- Toplam Randevu
+- Bekleyen
+- İletişime Geçildi
+- Tamamlandı
+- İptal Edilen
+
+### Dashboard Analytics
+
+- Bugünkü Randevu
+- Son 7 Gün
+- Tamamlanma Oranı
+- Aktif Süreç
+
+### Charts
+
+- Status Donut Chart
+- Monthly Appointment Trend
+
+Monthly chart:
+
+- Aktif yıl bazlı çalışmaktadır.
+- Sadece mevcut yıla ait verileri gösterir.
+- Gelecek aylar gizlenir.
+- Örneğin Ağustos ayında Ocak–Ağustos arası gösterilir.
+- Başlık aktif yılı dinamik olarak gösterir.
+
+Örnek:
+
+`2026 Randevu İstatistiği`
+
+---
+
+# 8. Admin Appointments
+
+Route:
+
+`/admin/appointments`
+
+Özellikler:
+
+- Tüm randevuları görüntüleme
+- Status filtreleme
+- Müşteri adı ile arama
+- Telefon numarası ile arama
+- Randevu detay modalı
+- Status değiştirme
+- Toast bildirimleri
+- Pagination
+
+Pagination:
+
+- Sayfa başına 10 randevu
+- Dinamik toplam sayfa
+- Sayfa değişiminde liste güncellenir
+
+Örneğin:
+
+`1 2 3 ...`
+
+---
+
+# 9. Appointment Search
+
+Admin randevu ekranında:
+
+- Müşteri adına göre arama
+- Telefon numarasına göre arama
+
+arama sistemi status filtreleriyle birlikte çalışmaktadır.
+
+Arama veya filtre değiştiğinde pagination ilk sayfaya resetlenmektedir.
+
+---
+
+# 10. About / Hakkımızda
+
+Hakkımızda ayrı bir sayfa olarak oluşturuldu.
+
+Terzi Murat'ın gerçek işletme hikâyesi kullanıldı.
+
+### İşletme Hikâyesi
+
+1996 yılında Gebze'de tekstil konfeksiyonunda başlayan çalışma hayatı;
+
+Pendik, Kartal, Kaynarca, İçmeler ve deri sanayisindeki kot firmasında devam etti.
+
+2004 yılında Gebze Yeni Bağdat Caddesi'nde Terzi Murat adıyla kendi iş yerini açarak profesyonel işletme hayatına geçiş yapıldı.
+
+Günümüzde işletme:
+
+**Hacıhalil Mahallesi, 1218. Sk. 7-3, Gebze / Kocaeli**
+
+adresinde faaliyet göstermektedir.
+
+### Önemli Not
+
+Site içerisinde kullanılan `15+ yıllık ustalık` gibi ifadeler yerine işletmenin gerçek hikâyesinde **2004'ten beri kendi işletmesi** bilgisi esas alınmaktadır.
+
+---
+
+# 11. Atelier Gallery
+
+Instagram Gallery yerine:
+
+**Atelier Gallery**
+
+olarak konumlandırıldı.
+
+Amaç:
+
+Terzi Murat'ın;
+
+- Atölye
+- Kumaş
+- Ölçü
+- Dikim
+- Usta işçilik
+- Özel tasarım
+
+süreçlerini görsel olarak göstermek.
+
+Galeride Fash.ai ile oluşturulan görseller kullanılmaktadır.
+
+---
+
+# 12. Footer
+
+Footer gerçek işletme bilgileriyle güncellendi.
+
+### İşletme
+
+**TERZİ MURAT**
+
+2004'ten beri.
+
+### Telefon
+
+**0539 313 09 83**
+
+### Adres
+
+**Hacıhalil Mahallesi 1218. Sk. 7-3
+Gebze / Kocaeli**
+
+### Çalışma Saatleri
+
+**Hafta içi & Cumartesi:**
+10:00 – 19:00
+
+**Pazar:**
+12:00 – 16:00
+
+### Instagram
+
+Henüz işletmeye ait Instagram hesabı bulunmadığı için eklenmedi.
+
+---
+
+# 13. Navigation
+
+Navbar:
+
+- Damatlıklar
+- Nişan Takımları
+- Özel Tasarım
+- Hakkımızda
+- Takımını Oluştur
+
+Mobil menü responsive olarak çalışmaktadır.
+
+Hakkımızda artık ayrı route olarak kullanılmaktadır.
+
+---
+
+# 14. Responsive Design
+
+Kontroller yapıldı.
+
+Test edilen:
+
+- Desktop
+- Tablet
+- Mobile
+
+Hero, collection, product cards, gallery, navbar ve admin panel responsive yapıdadır.
+
+Mobil görünümde taşma problemi bulunmamaktadır.
+
+---
+
+# 15. Security / Auth
+
+Axios interceptor yapısı bulunmaktadır.
+
+### Request Interceptor
+
+JWT token:
+
+`Authorization: Bearer <token>`
+
+formatında request header'a eklenmektedir.
+
+### Response Interceptor
+
+401 durumunda:
+
+1. Token silinir.
+2. Kullanıcı logout edilir.
+3. `/admin/login` ekranına yönlendirilir.
+
+Bu yapı test edilmiştir.
+
+---
+
+# 16. Current Status
+
+## 🟢 CUSTOMER REVIEW / FEATURE FREEZE
+
+Proje müşteri görüşmesine hazır durumdadır.
+
+Bu aşamada yeni büyük özellik geliştirilmesi planlanmamaktadır.
+
+Müşteri görüşmesinde aşağıdaki konularda geri bildirim alınacaktır:
+
+- Tasarım
+- Renkler
+- Görseller
+- Metinler
+- İşletme bilgileri
+- Ürün bilgileri
+- Fiyatlar
+- Hakkımızda içeriği
+- İletişim bilgileri
+- Çalışma saatleri
+
+---
+
+# 17. Backlog — After Customer Review
+
+Müşteri geri bildirimi sonrasında değerlendirilecek konular:
+
+- [ ] Müşteri geri bildirimlerine göre UI revizyonları
+- [ ] Gerçek ürün/görsel içeriklerinin son halinin eklenmesi
+- [ ] Gerçek Instagram hesabının eklenmesi
+- [ ] Gerçek işletme bilgilerinin son kontrolü
+- [ ] SEO optimizasyonu
+- [ ] Production deployment
+- [ ] Domain / hosting
+- [ ] Production environment variables
+- [ ] Final security review
+- [ ] Final responsive review
+
+### Özellikle ertelenen özellikler
+
+- Excel export
+- PDF export
+- Gelişmiş tarih filtreleme
+- Admin bildirim sistemi
+- Gelişmiş raporlama
+
+Küçük işletme kullanım senaryosu nedeniyle şu an için gerekli görülmemektedir.
+
+---
+
+# 18. Technical Stack
+
+### Frontend
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+- React Hot Toast
+- Lucide React
+
+### Backend
+
+- Java
+- Spring Boot
+- Spring Security
+- JWT
+- JPA / Hibernate
+- MySQL
+
+### Development
+
+- Git
+- GitHub
+- Docker
+- DBeaver
+- VS Code / IntelliJ IDEA
+
+---
+
+# 19. Important Routes
+
+### Public
+
+`/`
+
+`/create-your-suit`
+
+`/appointment`
+
+`/about`
+
+### Admin
+
+`/admin/login`
+
+`/admin`
+
+`/admin/appointments`
+
+---
+
+# 20. Freeze Note
+
+**10 August 2026**
+
+Proje müşteri görüşmesine kadar stabil bırakılmıştır.
+
+Yeni özellik geliştirmek yerine müşteri geri bildirimi beklenecektir.
+
+**Next milestone: Customer Review → Feedback → Final Revision**
