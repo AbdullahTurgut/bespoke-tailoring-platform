@@ -191,7 +191,7 @@ sm:w-auto
             "
           >
             <span className="h-px w-8 bg-gray-700" />
-            Since 1998
+            2004'ten beri
           </div>
         </div>
 

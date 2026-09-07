@@ -115,7 +115,7 @@ export default function AdminSidebar() {
           text-[#C8A45D]
           "
         >
-          Since 1998
+          2004'ten beri
         </p>
       </div>
     </aside>

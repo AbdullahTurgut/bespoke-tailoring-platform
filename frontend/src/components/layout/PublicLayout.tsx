@@ -5,12 +5,14 @@ import PageTransition from "../shared/PageTransition";
 
 export default function PublicLayout() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
 
-      <PageTransition>
-        <Outlet />
-      </PageTransition>
+      <div className="flex-1">
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
+      </div>
 
       <Footer />
     </div>

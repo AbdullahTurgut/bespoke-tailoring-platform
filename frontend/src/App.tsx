@@ -6,7 +6,7 @@ import { AuthProvider } from "./auth/AuthContext";
 
 function App() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen">
       <ScrollToTop />
       <AuthProvider>
         <AppRouter />

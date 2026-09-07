@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import type { Product } from "../../data/products";
 
 interface ProductCardProps {
@@ -41,9 +41,32 @@ const ProductCard = ({ product }: ProductCardProps) => {
   "
         />
 
+        {/* Badge */}
+        {product.badge && (
+          <span
+            className="
+            absolute
+            top-4
+            left-4
+            bg-black/75
+            text-[#C8A45D]
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-widest
+            px-3
+            py-1
+            rounded-full
+            "
+          >
+            {product.badge}
+          </span>
+        )}
+
         {/* Favorite Button */}
 
         <button
+          aria-label="Favorilere ekle"
           className="
           absolute
           top-4
@@ -186,7 +209,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
           text-sm
           "
         >
-          <span>⭐⭐⭐⭐⭐</span>
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <Star
+                key={index}
+                size={14}
+                className={
+                  index < product.rating
+                    ? "fill-[#C8A45D] text-[#C8A45D]"
+                    : "text-gray-300"
+                }
+              />
+            ))}
+          </div>
 
           <span
             className="

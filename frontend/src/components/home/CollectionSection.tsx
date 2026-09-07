@@ -22,74 +22,76 @@ const CollectionSection = ({
     <section
       id={id}
       className="
- py-24
- bg-[#FAFAF8]
- scroll-mt-20
-    "
+        py-24
+        bg-[#FAFAF8]
+        scroll-mt-20
+      "
     >
-      {/* Header */}
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+        {/* Header */}
 
-      <div
-        className="
-        text-center
-        mb-14
-      "
-      >
-        <h2
+        <div
           className="
-          text-3xl
-          md:text-5xl
-          uppercase
-          tracking-[0.25em]
-          font-light
+          text-center
+          mb-14
         "
         >
-          {title}
-        </h2>
-
-        <p
-          className="
-          mt-6
-          text-gray-500
-          max-w-xl
-          mx-auto
-          leading-relaxed
-        "
-        >
-          {description}
-        </p>
-
-        <button
-          className="
-          mt-8
-          uppercase
-          text-sm
-          tracking-[0.25em]
-          border-b
-          border-black
-          pb-2
-          hover:opacity-60
-          transition
+          <h2
+            className="
+            text-3xl
+            md:text-5xl
+            uppercase
+            tracking-[0.25em]
+            font-light
           "
+          >
+            {title}
+          </h2>
+
+          <p
+            className="
+            mt-6
+            text-gray-500
+            max-w-xl
+            mx-auto
+            leading-relaxed
+          "
+          >
+            {description}
+          </p>
+
+          <button
+            className="
+            mt-8
+            uppercase
+            text-sm
+            tracking-[0.25em]
+            border-b
+            border-black
+            pb-2
+            hover:opacity-60
+            transition
+            "
+          >
+            Modelleri Keşfet →
+          </button>
+        </div>
+
+        {/* Products */}
+
+        <div
+          className="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-4
+          gap-8
+        "
         >
-          Modelleri Keşfet →
-        </button>
-      </div>
-
-      {/* Products */}
-
-      <div
-        className="
-        grid
-        grid-cols-1
-        sm:grid-cols-2
-        lg:grid-cols-4
-        gap-8
-      "
-      >
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
     </section>
   );

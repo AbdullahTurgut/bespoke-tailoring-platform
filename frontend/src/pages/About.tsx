@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import SEO from "@/components/seo/SEO";
 
 const About = () => {
   return (
-    <main className="bg-white text-black">
+    <>
+      <SEO
+        title="Hakkımızda | Terzi Murat"
+        description="1996'dan bugüne uzanan tekstil tecrübesi ve 2004'ten beri Gebze'de kişiye özel usta terzilik anlayışı."
+      />
+      <main className="bg-white text-black">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-32">
@@ -249,7 +255,7 @@ const About = () => {
               duration-300
               hover:border-[#C8A45D]
               hover:bg-[#C8A45D]
-              hover:text-white
+              hover:text-black
             "
           >
             Randevu Al
@@ -257,6 +263,7 @@ const About = () => {
         </div>
       </section>
     </main>
+    </>
   );
 };
 
