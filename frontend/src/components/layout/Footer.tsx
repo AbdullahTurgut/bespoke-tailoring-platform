@@ -1,6 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    to: string,
+  ) => {
+    if (location.pathname === "/") {
+      const id = to.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        window.history.pushState(null, "", `#${id}`);
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <footer
       className="
@@ -93,15 +110,23 @@ const Footer = () => {
               "
             >
               <li>
-                <a href="/#wedding" className="transition hover:text-white">
+                <Link
+                  to="/#wedding"
+                  onClick={(e) => handleAnchorClick(e, "/#wedding")}
+                  className="transition hover:text-white"
+                >
                   Damatlıklar
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="/#engagement" className="transition hover:text-white">
+                <Link
+                  to="/#engagement"
+                  onClick={(e) => handleAnchorClick(e, "/#engagement")}
+                  className="transition hover:text-white"
+                >
                   Nişan Takımları
-                </a>
+                </Link>
               </li>
 
               <li>
@@ -116,6 +141,12 @@ const Footer = () => {
               <li>
                 <Link to="/about" className="transition hover:text-white">
                   Hakkımızda
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/appointment" className="transition hover:text-white">
+                  Randevu Al
                 </Link>
               </li>
             </ul>
