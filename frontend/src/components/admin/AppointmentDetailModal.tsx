@@ -152,7 +152,7 @@ duration-300
                 Kumaş
               </p>
 
-              <p className="mt-2 text-lg">{appointment.fabric}</p>
+              <p className="mt-2 text-lg">{appointment.fabric || "Belirtilmedi"}</p>
             </div>
             <div
               className="
@@ -174,7 +174,7 @@ duration-300
                 Yaka
               </p>
 
-              <p className="mt-2 text-lg">{appointment.lapel}</p>
+              <p className="mt-2 text-lg">{appointment.lapel || "Belirtilmedi"}</p>
             </div>
             <div
               className="
@@ -196,7 +196,7 @@ duration-300
                 Düğme
               </p>
 
-              <p className="mt-2 text-lg">{appointment.button}</p>
+              <p className="mt-2 text-lg">{appointment.button || "Belirtilmedi"}</p>
             </div>
           </div>
           <div
@@ -277,7 +277,9 @@ disabled:cursor-not-allowed
               font-luxury
               "
             >
-              {appointment.price.toLocaleString("tr-TR")} ₺
+              {appointment.price != null
+                ? `${appointment.price.toLocaleString("tr-TR")} ₺`
+                : "Randevuda Belirlenecek"}
             </p>
           </div>
         </div>

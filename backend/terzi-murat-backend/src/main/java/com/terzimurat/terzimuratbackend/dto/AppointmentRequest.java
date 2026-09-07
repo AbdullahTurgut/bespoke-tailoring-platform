@@ -16,9 +16,7 @@ public class AppointmentRequest {
     private CustomerRequest customer;
 
     @Valid
-    @NotNull
     private SuitRequest suit;
 
-    @NotNull
     private BigDecimal price;
 }

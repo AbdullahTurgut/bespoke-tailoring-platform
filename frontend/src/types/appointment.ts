@@ -9,8 +9,8 @@ export type CustomerRequest = {
 
 export type AppointmentRequest = {
   customer: CustomerRequest;
-  suit: Suit;
-  price: number;
+  suit?: Suit | null;
+  price?: number | null;
 };
 
 export type AppointmentStatus =
@@ -25,10 +25,10 @@ export interface Appointment {
   email: string;
   phone: string;
   message: string;
-  fabric: string;
-  lapel: string;
-  button: string;
-  price: number;
+  fabric?: string | null;
+  lapel?: string | null;
+  button?: string | null;
+  price?: number | null;
   createdAt: string;
   status: AppointmentStatus;
 }

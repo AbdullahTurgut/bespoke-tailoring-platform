@@ -37,19 +37,25 @@ export default function DashboardAnalytics({ appointments }: Props) {
       ? 0
       : Math.round((completed / appointments.length) * 100);
 
+  const pricedAppointments = appointments.filter(
+    (appointment) => appointment.price != null && appointment.price > 0,
+  );
+
   const averagePrice =
-    appointments.length === 0
+    pricedAppointments.length === 0
       ? 0
       : Math.round(
-          appointments.reduce(
-            (sum, appointment) => sum + appointment.price,
+          pricedAppointments.reduce(
+            (sum, appointment) => sum + (appointment.price ?? 0),
             0,
-          ) / appointments.length,
+          ) / pricedAppointments.length,
         );
 
   const fabricCount = appointments.reduce(
     (acc, appointment) => {
-      acc[appointment.fabric] = (acc[appointment.fabric] || 0) + 1;
+      if (appointment.fabric) {
+        acc[appointment.fabric] = (acc[appointment.fabric] || 0) + 1;
+      }
 
       return acc;
     },

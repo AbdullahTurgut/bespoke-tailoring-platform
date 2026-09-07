@@ -85,7 +85,9 @@ export default function RecentAppointments({ appointments }: Props) {
                   text-gray-500
                   "
                 >
-                  {appointment.fabric} • {appointment.lapel}
+                  {appointment.fabric && appointment.lapel
+                    ? `${appointment.fabric} • ${appointment.lapel}`
+                    : "Genel Randevu"}
                 </p>
               </div>
 

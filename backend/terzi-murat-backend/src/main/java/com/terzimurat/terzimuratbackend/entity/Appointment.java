@@ -33,16 +33,16 @@ public class Appointment {
     @Column(columnDefinition = "TEXT")
     private String message;
 
-    @Column(nullable = false)
+    @Column
     private String fabric;
 
-    @Column(nullable = false)
+    @Column
     private String lapel;
 
-    @Column(nullable = false)
+    @Column
     private String button;
 
-    @Column(nullable = false)
+    @Column
     private BigDecimal price;
 
     @CreationTimestamp

@@ -22,17 +22,22 @@ public class AppointmentService {
 
     public AppointmentResponse createAppointment(AppointmentRequest request) {
 
-        Appointment appointment = Appointment.builder()
+        Appointment.AppointmentBuilder appointmentBuilder = Appointment.builder()
                 .customerName(request.getCustomer().getName())
                 .email(request.getCustomer().getEmail())
                 .phone(request.getCustomer().getPhone())
                 .message(request.getCustomer().getMessage())
-                .fabric(request.getSuit().getFabric())
-                .lapel(request.getSuit().getLapel())
-                .button(request.getSuit().getButton())
                 .price(request.getPrice())
-                .status(AppointmentStatus.PENDING)
-                .build();
+                .status(AppointmentStatus.PENDING);
+
+        if (request.getSuit() != null) {
+            appointmentBuilder
+                    .fabric(request.getSuit().getFabric())
+                    .lapel(request.getSuit().getLapel())
+                    .button(request.getSuit().getButton());
+        }
+
+        Appointment appointment = appointmentBuilder.build();
 
 
         Appointment savedAppointment =

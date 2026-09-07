@@ -8,12 +8,15 @@ import ErrorMessage from "@/components/shared/ErrorMessage";
 import LoadingSpinner from "@/components/shared/LoadingSpinner";
 
 type AppointmentState = {
-  suit: Suit;
-  price: number;
+  suit?: Suit;
+  price?: number;
 };
 
 const Appointment = () => {
   const location = useLocation();
+  const { suit, price } = (location.state as AppointmentState) || {};
+  const isConfigured = Boolean(suit && price !== undefined);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -37,7 +40,7 @@ const Appointment = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.phone) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
       setError("Lütfen zorunlu alanları doldurun.");
       return;
     }
@@ -47,28 +50,27 @@ const Appointment = () => {
       return;
     }
 
-    if (!suit || price === undefined) {
-      setError("Takım bilgileri bulunamadı.");
-      return;
-    }
-
     setError("");
     setLoading(true);
 
     try {
       const payload = {
         customer: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          message: formData.message.trim(),
         },
-        suit: {
-          fabric: suit.fabric,
-          lapel: suit.lapel,
-          button: suit.button,
-        },
-        price,
+        ...(isConfigured && suit && price !== undefined
+          ? {
+              suit: {
+                fabric: suit.fabric,
+                lapel: suit.lapel,
+                button: suit.button,
+              },
+              price,
+            }
+          : {}),
       };
 
       const response = await createAppointment(payload);
@@ -86,8 +88,6 @@ const Appointment = () => {
       setLoading(false);
     }
   };
-
-  const { suit, price } = (location.state as AppointmentState) || {};
 
   return (
     <>
@@ -145,7 +145,7 @@ const Appointment = () => {
               Size özel takım elbiseniz için uzman terzimizle görüşme oluşturun.
             </p>
           </div>
-          {suit && (
+          {isConfigured && suit && price !== undefined ? (
             <div
               className="
 mb-10
@@ -249,6 +249,30 @@ text-[#C8A45D]
                 </p>
               </div>
             </div>
+          ) : (
+            <div
+              className="
+              mb-10
+              border
+              border-white/10
+              p-6
+              bg-white/5
+              "
+            >
+              <h3
+                className="
+                text-[#C8A45D]
+                uppercase
+                tracking-[0.3em]
+                text-xs
+                "
+              >
+                Genel Randevu
+              </h3>
+              <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+                Model, kumaş ve ölçü detaylarını randevunuz sırasında birlikte belirleyebiliriz.
+              </p>
+            </div>
           )}
 
           {error && (
@@ -301,26 +325,50 @@ leading-relaxed
                 Ekibimiz en kısa sürede sizinle iletişime geçecektir.
               </p>
 
-              <div
-                className="
+              {isConfigured && price !== undefined ? (
+                <div
+                  className="
 mt-8
 border-t
 border-white/10
 pt-6
 "
-              >
-                <p className="text-sm text-gray-500">Tahmini Fiyat</p>
+                >
+                  <p className="text-sm text-gray-500">Tahmini Fiyat</p>
 
-                <p
-                  className="
+                  <p
+                    className="
 mt-2
 text-3xl
 font-luxury
 "
+                  >
+                    {price.toLocaleString("tr-TR")} ₺
+                  </p>
+                </div>
+              ) : (
+                <div
+                  className="
+mt-8
+border-t
+border-white/10
+pt-6
+"
                 >
-                  {price.toLocaleString("tr-TR")} ₺
-                </p>
-              </div>
+                  <p className="text-sm text-gray-500">Randevu Türü</p>
+
+                  <p
+                    className="
+mt-2
+text-2xl
+font-luxury
+text-[#C8A45D]
+"
+                  >
+                    Genel Atölye Randevusu
+                  </p>
+                </div>
+              )}
             </div>
           ) : (
             <form

@@ -80,10 +80,14 @@ export default function AppointmentTable({ appointments, onDetail }: Props) {
 
                 <td className="px-6 py-5 text-gray-400">{appointment.phone}</td>
 
-                <td className="px-6 py-5 capitalize">{appointment.fabric}</td>
+                <td className="px-6 py-5 capitalize">
+                  {appointment.fabric || "Genel Randevu"}
+                </td>
 
                 <td className="px-6 py-5">
-                  {appointment.price.toLocaleString("tr-TR")} ₺
+                  {appointment.price != null
+                    ? `${appointment.price.toLocaleString("tr-TR")} ₺`
+                    : "Belirlenecek"}
                 </td>
 
                 <td className="px-6 py-5">
