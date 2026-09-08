@@ -36,25 +36,15 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
-      <div className="mb-10">
-        <h1
-          className="
-          text-5xl
-          font-luxury
-          "
-        >
+    <div className="space-y-6 sm:space-y-8">
+      <div>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-luxury text-white">
           Dashboard
         </h1>
 
-        <p
-          className="
-          mt-4
-          text-gray-400
-          "
-        >
-          Terzi Murat yönetim paneline hoş geldiniz. Randevu durumlarını ve
-          genel istatistikleri takip edin.
+        <p className="mt-2 text-sm sm:text-base text-gray-400 leading-relaxed max-w-2xl">
+          Terzi Murat yönetim paneline hoş geldiniz. Randevu durumlarını, finansal
+          görünümü ve atölye istatistiklerini buradan takip edebilirsiniz.
         </p>
       </div>
 
@@ -64,13 +54,7 @@ export default function Dashboard() {
 
       <DashboardCharts appointments={appointments} />
 
-      <div
-        className="
- grid
- gap-6
- lg:grid-cols-2
- "
-      >
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
         <RecentAppointments appointments={appointments} />
 
         <ActivitySummary appointments={appointments} />

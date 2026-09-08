@@ -28,7 +28,7 @@ export default function StatusDonutChart({ appointments }: Props) {
       value: appointments.filter((a) => a.status === "COMPLETED").length,
     },
     {
-      name: "İptal",
+      name: "İptal Edildi",
       value: appointments.filter((a) => a.status === "CANCELLED").length,
     },
   ];

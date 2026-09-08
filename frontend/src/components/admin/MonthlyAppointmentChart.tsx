@@ -56,58 +56,34 @@ export default function MonthlyAppointmentChart({ appointments }: Props) {
   });
 
   return (
-    <div
-      className="
-      rounded-2xl
-      border
-      border-white/10
-      bg-white/[0.04]
-      p-6
-      "
-    >
-      <div className="mb-6 text-center">
-        <h2
-          className="
-          text-xl
-          font-luxury
-          "
-        >
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6">
+      <div className="mb-5 sm:mb-6 text-center">
+        <h2 className="text-xl font-luxury text-white">
           {currentYear} Randevu İstatistiği
         </h2>
-        <p
-          className="
- mt-2
- text-xs
- uppercase
- tracking-[0.25em]
- text-gray-500
- "
-        >
-          Ocak - {months[months.length - 1]} dönemi
-        </p>
-        <p
-          className="
-          mt-2
-          text-xs
-          uppercase
-          tracking-[0.25em]
-          text-gray-500
-          "
-        >
-          Aylık randevu trendi
+        <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#C8A45D]">
+          Ocak - {months[months.length - 1]} dönemi aylık trend
         </p>
       </div>
 
-      <div className="h-[320px]">
+      <div className="h-[260px] sm:h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={monthlyData}>
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
 
-            <XAxis dataKey="month" stroke="#888" />
+            <XAxis dataKey="month" stroke="#888" fontSize={12} />
 
-            <YAxis allowDecimals={false} stroke="#888" />
+            <YAxis allowDecimals={false} stroke="#888" fontSize={12} />
 
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: "#111111",
+                borderColor: "rgba(255,255,255,0.15)",
+                borderRadius: "12px",
+                color: "#ffffff",
+                fontSize: "12px",
+              }}
+            />
 
             <Line
               type="monotone"
@@ -115,7 +91,8 @@ export default function MonthlyAppointmentChart({ appointments }: Props) {
               stroke="#C8A45D"
               strokeWidth={3}
               dot={{
-                r: 5,
+                r: 4,
+                fill: "#C8A45D",
               }}
             />
           </LineChart>

@@ -5,6 +5,7 @@ import {
   CheckCircle2,
   Activity,
 } from "lucide-react";
+import { fabricNames } from "@/constants/suitOptions";
 
 type Props = {
   appointments: Appointment[];
@@ -62,8 +63,14 @@ export default function DashboardAnalytics({ appointments }: Props) {
     {} as Record<string, number>,
   );
 
-  const popularFabric =
+  const popularFabricKey =
     Object.entries(fabricCount).sort((a, b) => b[1] - a[1])[0]?.[0] ?? "-";
+
+  const popularFabric =
+    popularFabricKey !== "-"
+      ? fabricNames[popularFabricKey as keyof typeof fabricNames] ||
+        popularFabricKey.toUpperCase()
+      : "-";
 
   const lastWeekAppointments = appointments.filter((appointment) => {
     const date = new Date(appointment.createdAt);
@@ -101,29 +108,21 @@ export default function DashboardAnalytics({ appointments }: Props) {
       icon: Activity,
     },
     {
-      title: "Ortalama Sipariş",
+      title: "Ortalama Fiyat",
       value: `${averagePrice.toLocaleString("tr-TR")} ₺`,
       description: "Ortalama müşteri talebi",
       icon: TrendingUp,
     },
     {
       title: "Popüler Kumaş",
-      value: popularFabric.toUpperCase(),
+      value: popularFabric,
       description: "En çok tercih edilen",
       icon: Activity,
     },
   ];
 
   return (
-    <div
-      className="
-      grid
-      gap-6
-      mb-10
-      lg:grid-cols-3
-      xl:grid-cols-3
-      "
-    >
+    <div className="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {cards.map((card) => {
         const Icon = card.icon;
 
@@ -131,90 +130,35 @@ export default function DashboardAnalytics({ appointments }: Props) {
           <div
             key={card.title}
             className="
-            group
-            relative
-            overflow-hidden
-            rounded-2xl
-            border
-            border-white/10
-            bg-white/4
-            p-6
-            transition-all
-            duration-300
-            hover:-translate-y-1
-            hover:border-[#C8A45D]/50
+              group relative overflow-hidden rounded-2xl border border-white/10
+              bg-white/[0.04] p-4 sm:p-5 lg:p-6 transition-all duration-300
+              hover:-translate-y-0.5 hover:border-[#C8A45D]/50
             "
           >
             <div
               className="
-              absolute
-              -right-10
-              -top-10
-              h-32
-              w-32
-              rounded-full
-              bg-[#C8A45D]/10
-              blur-3xl
+                absolute -right-10 -top-10 h-28 w-28 rounded-full
+                bg-[#C8A45D]/10 blur-2xl
               "
             />
 
-            <div
-              className="
-              relative
-              flex
-              justify-between
-              "
-            >
+            <div className="relative flex justify-between items-start">
               <div>
-                <p
-                  className="
-                  text-xs
-                  uppercase
-                  tracking-[0.3em]
-                  text-gray-500
-                  "
-                >
+                <p className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400">
                   {card.title}
                 </p>
 
-                <h2
-                  className="
-                  mt-5
-                  text-4xl
-                  font-luxury
-                  text-[#C8A45D]
-                  "
-                >
+                <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl font-luxury text-[#C8A45D] font-semibold tabular-nums">
                   {card.value}
                 </h2>
 
-                <p
-                  className="
-                  mt-4
-                  text-xs
-                  uppercase
-                  tracking-widest
-                  text-gray-600
-                  "
-                >
+                <p className="mt-3 sm:mt-4 text-[11px] uppercase tracking-wider text-gray-500">
                   {card.description}
                 </p>
               </div>
 
-              <div
-                className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#C8A45D]/30
-                bg-black/30
-                "
-              >
-                <Icon size={20} className="text-[#C8A45D]" />
+              <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#C8A45D]/30 bg-black/30 shrink-0">
+                <Icon size={18} className="text-[#C8A45D]" />
               </div>
             </div>
           </div>

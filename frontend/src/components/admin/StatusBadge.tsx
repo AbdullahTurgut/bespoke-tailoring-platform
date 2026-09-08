@@ -6,20 +6,20 @@ type Props = {
 
 const statusStyles = {
   PENDING: {
-    label: "Bekliyor",
-    className: "bg-yellow-500/20 text-yellow-400",
+    label: "Bekleyen",
+    className: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30",
   },
   CONTACTED: {
     label: "İletişime Geçildi",
-    className: "bg-blue-500/20 text-blue-400",
+    className: "bg-blue-500/20 text-blue-400 border border-blue-500/30",
   },
   COMPLETED: {
     label: "Tamamlandı",
-    className: "bg-green-500/20 text-green-400",
+    className: "bg-green-500/20 text-green-400 border border-green-500/30",
   },
   CANCELLED: {
-    label: "İptal",
-    className: "bg-red-500/20 text-red-400",
+    label: "İptal Edildi",
+    className: "bg-red-500/20 text-red-400 border border-red-500/30",
   },
 };
 

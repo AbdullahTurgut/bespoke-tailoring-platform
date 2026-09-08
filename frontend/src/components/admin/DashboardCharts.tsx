@@ -41,45 +41,41 @@ export default function DashboardCharts({ appointments }: Props) {
   );
 
   return (
-    <div
-      className="
-      rounded-2xl
-      border
-      border-white/10
-      bg-white/[0.04]
-      p-6
-      "
-    >
-      <h2
-        className="
-        mb-6
-        text-2xl
-        font-luxury
-        "
-      >
-        Randevu Trendi
-      </h2>
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6">
+      <div className="mb-5 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-luxury text-white">
+          Randevu Trendi
+        </h2>
+        <p className="mt-1 text-xs sm:text-sm text-gray-400">
+          Günlük randevu oluşturma sıklığı
+        </p>
+      </div>
 
-      <div
-        className="
-        h-[300px]
-        "
-      >
+      <div className="h-[250px] sm:h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
 
-            <XAxis dataKey="date" />
+            <XAxis dataKey="date" stroke="#888" fontSize={12} />
 
-            <YAxis />
+            <YAxis stroke="#888" fontSize={12} allowDecimals={false} />
 
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: "#111111",
+                borderColor: "rgba(255,255,255,0.15)",
+                borderRadius: "12px",
+                color: "#ffffff",
+                fontSize: "12px",
+              }}
+            />
 
             <Line
               type="monotone"
               dataKey="count"
               stroke="#C8A45D"
               strokeWidth={3}
+              dot={{ r: 4, fill: "#C8A45D" }}
             />
           </LineChart>
         </ResponsiveContainer>

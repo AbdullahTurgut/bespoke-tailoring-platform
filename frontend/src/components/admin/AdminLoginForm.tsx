@@ -54,13 +54,15 @@ const AdminLoginForm = () => {
     <form
       onSubmit={handleSubmit}
       className="
-      bg-white/5
+      bg-white/[0.04]
       border
       border-white/10
       rounded-2xl
-      p-8
+      p-5
+      sm:p-8
       backdrop-blur-sm
-      space-y-6
+      space-y-5
+      sm:space-y-6
       "
     >
       {error && (
@@ -165,11 +167,14 @@ const AdminLoginForm = () => {
         w-full
         bg-[#C8A45D]
         text-black
-        py-4
+        py-3.5
+        sm:py-4
         rounded-lg
         uppercase
-        tracking-[0.25em]
-        text-sm
+        tracking-[0.12em]
+        sm:tracking-[0.25em]
+        text-xs
+        sm:text-sm
         font-medium
         transition-all
         duration-300

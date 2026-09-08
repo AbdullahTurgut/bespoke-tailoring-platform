@@ -57,7 +57,7 @@ export default function AppointmentFilters({
       count: completed,
     },
     {
-      label: "İptal",
+      label: "İptal Edildi",
       value: "CANCELLED",
       count: cancelled,
     },
@@ -66,16 +66,10 @@ export default function AppointmentFilters({
   return (
     <div
       className="
-      flex
-      flex-wrap
-      justify-center
-      gap-3
-      mb-10
-      rounded-2xl
-      border
-      border-white/10
-      bg-white/[0.04]
-      p-4
+      flex flex-wrap items-center justify-start sm:justify-center
+      gap-2 sm:gap-3 mb-6 sm:mb-8
+      rounded-2xl border border-white/10 bg-white/[0.04]
+      p-3 sm:p-4
       "
     >
       {filters.map((filter) => {
@@ -84,37 +78,23 @@ export default function AppointmentFilters({
         return (
           <button
             key={filter.value}
+            type="button"
             onClick={() => onFilterChange(filter.value)}
             className={`
-            flex
-            items-center
-            gap-2
-            rounded-full
-            px-6
-            py-3
-            text-xs
-            uppercase
-            tracking-widest
-            transition-all
-            duration-300
+            flex items-center gap-2 rounded-full
+            px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs uppercase tracking-wider
+            transition-all duration-200
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A45D]
 
             ${
               isActive
                 ? `
-                bg-[#C8A45D]
-                text-black
-                border
-                border-[#C8A45D]
-                shadow-lg
-                shadow-[#C8A45D]/10
+                bg-[#C8A45D] text-black border border-[#C8A45D] font-medium
+                shadow-md shadow-[#C8A45D]/10
                 `
                 : `
-                border
-                border-white/10
-                text-gray-400
-                hover:text-white
-                hover:border-[#C8A45D]/40
-                hover:-translate-y-0.5
+                border border-white/10 text-gray-400
+                hover:text-white hover:border-[#C8A45D]/40
                 `
             }
             `}
@@ -123,15 +103,11 @@ export default function AppointmentFilters({
 
             <span
               className={`
-              rounded-full
-              px-2
-              py-1
-              text-[10px]
-              font-semibold
+              rounded-full px-2 py-0.5 text-[10px] font-semibold tabular-nums
               ${
                 isActive
                   ? "bg-black/20 text-black"
-                  : "bg-[#C8A45D]/10 text-[#C8A45D]"
+                  : "bg-[#C8A45D]/15 text-[#C8A45D]"
               }
               `}
             >
