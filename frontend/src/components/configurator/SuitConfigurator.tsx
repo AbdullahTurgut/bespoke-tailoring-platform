@@ -11,19 +11,17 @@ const SuitConfigurator = () => {
   });
 
   return (
-    <div
-      className="
-      grid
-      md:grid-cols-2
-      gap-8
-      items-center
-      "
-    >
-      <SuitOptions suit={suit} setSuit={setSuit} />
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div className="lg:col-span-7">
+        <SuitOptions suit={suit} setSuit={setSuit} />
+      </div>
 
-      <SuitPreview suit={suit} />
+      <div className="lg:col-span-5 lg:sticky lg:top-24">
+        <SuitPreview suit={suit} />
+      </div>
     </div>
   );
 };
 
 export default SuitConfigurator;
+

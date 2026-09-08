@@ -175,7 +175,7 @@ text-xs
       text-gray-500
       "
                   >
-                    Fabric
+                    Kumaş
                   </p>
 
                   <p className="mt-2 text-white text-lg">
@@ -192,7 +192,7 @@ text-xs
       text-gray-500
       "
                   >
-                    Lapel
+                    Yaka
                   </p>
 
                   <p className="mt-2 text-white text-lg">
@@ -209,7 +209,7 @@ text-xs
       text-gray-500
       "
                   >
-                    Button
+                    Düğme
                   </p>
 
                   <p className="mt-2 text-white text-lg">
